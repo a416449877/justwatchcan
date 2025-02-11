@@ -1,0 +1,42 @@
+
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body">
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">用户名称</label>
+            <div class="layui-input-block">
+                <input name="user_name" required placeholder="请输入用户名称" value="{$info.username}" class="layui-input">
+                <input type="hidden" name="_csrf_" value="{:systoken('admin/users/edit_users')}" readonly="readonly">
+
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">单数模式</label>
+            <div class="layui-input-block">
+                <select name="flag" id="selectList">
+                    <option value="0" <?php echo $info['flag']==0 ? 'selected': ''; ?> >跟随系统设置</option>
+                    <option value="1" <?php echo $info['flag']==1 ? 'selected': ''; ?> >隔日清空</option>
+                    <option value="2" <?php echo $info['flag']==2 ? 'selected': ''; ?> >满单数清空</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+        </div>
+        <div class="layui-form-item">
+        </div>
+       
+
+    </div>
+    <input name="id" type="hidden" value="{$info.id}">
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+
+    
+    <script>window.form.render();</script>
+
+</form>

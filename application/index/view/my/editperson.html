@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Profile</title>
+	<link rel="stylesheet" href="/static_en/css/css.css">
+</head>
+<body class="bodybg">
+	<div class="headerfix"><div class="back"><a href="javascript:;"><img src="/static_en/img/Icon-04.png" alt=""></a></div><h2>Profile</h2></div>
+	
+	<div class="profile">
+		<dl>
+			<dt>
+				<a href="javascript:;" class="uploadfile"><p>Profile Image</p> <div class="face"><img src="{$info.headpic}" onerror="this.src='/static_en/img/face.jpg'" alt="" onclick="location.href=`/index/my/headimg.html`"></div></a>
+				<form action="" method="post" enctype="multipart/form-data">
+					<input type="file" class="inputfile">
+				</form>
+			</dt>
+			<dd><a href="javascript:;"><p>username</p><span>{$info.username}</span></a></dd>
+			<!--<dd class="selectbtn"><a href="javascript:;"><p>Gender</p><span>male</span></a></dd>-->
+			<dd class="selectbtn"><a href="javascript:;"><p>Gender</p><span>{eq name="info.gender" value="0"}male{else/}female{/eq}</span></a></dd>
+		</dl>
+		<dl>
+			<dd><a href="/index/ctrl/edit_trading.html"><p>Withdrawal Password</p></a></dd>
+			<dd><a href="/index/ctrl/edit_pwd.html"><p>Login Password</p></a></dd>
+		</dl>
+	</div>
+	
+	<script type="text/javascript" src="/static_en/js/jquery.js"></script>
+	<script type="text/javascript" src="/static_en/js/public.js"></script>
+	<script type="text/javascript">
+	/*	$('.selectbtn').click(function(){
+			selectShow();
+		});
+		
+		$('.selectpop ul li').click(function(){
+			let v=$(this).html();
+			
+			Axios('url',{gender:v});
+			
+			$('.selectbtn span').html(v);
+			selectHide();
+		});
+		
+		$('.uploadfile').click(function(){
+			$('.inputfile').click();
+		});*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta name='full-screen' content='true' />
+    <meta name='x5-fullscreen' content='true' />
+    <meta name='360-fullscreen' content='true' />
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/toast.css">
+    <link rel="stylesheet" href="/static/css/loading.css">
+    <link rel="stylesheet" href="/static/css/public.css">
+    <link href="/static/js/docco.min.css" rel="stylesheet">
+    
+    <script src="/static/js/highlight.min.js"></script>
+    <script src="/static/js/fastclick.js"></script>
+    <!--<script type="text/javascript" src="/static/js/message.js"></script>-->
+    
+    <script src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/static/js/toast.js"></script>
+    <script type="text/javascript" src="/static/js/loading.js"></script>
+	<script type="text/javascript" src="/static/js/dialog.min.js"></script>
+	<script type="text/javascript" src="/static/js/layer.js"></script>
+	<!--实名弹窗-->
+	<script type="text/javascript" src="/static/js/hsycmsAlert.js"></script>
+	<!--实名弹窗-->
+	<!--消息弹窗-->
+	<div class="alert_windows1" onclick="xiaoxi_close()">
+		<span id="xiaoxi_tan"></span>
+	</div>
+	<div class="alert_windows2" onclick="tongzhi_close()">
+		<span id="tongzhi_tan"></span>
+	</div>
+	
+	<div class="hsycms-model-mask" id="mask-alert"></div>
+    <div class="hsycms-model hsycms-model-alert" id="alert">
+        <div class="hscysm-model-title"></div>
+        <div class="hsycms-model-text">这里是内容</div>
+        <div class="hsycms-model-btn">
+            <button type="button ok">{:lang('前往认证')}></button>
+        </div>
+    </div>
+	<script type="text/javascript">
+        //超时退出
+        var uid="{:session('uid')}";
+        var maxTime = 1200; // seconds
+        var time = maxTime;
+        $('body').on('keydown mousemove mousedown', function(e){
+            time = maxTime; // reset
+        });
+        var intervalId = setInterval(function(){
+            time--;
+            if(time <= 0) {
+                ShowInvalidLoginMessage();
+                clearInterval(intervalId);
+            }
+        }, 1000)
+        function ShowInvalidLoginMessage(){
+            window.location.href="{:url('user/logout')}";
+            alert('长时间无操作，自动退出！');
+        }
+        
+        //消息弹窗
+        if(uid){
+        function xiaoxi_tan() {
+            var seeNumUrl = "{:url('index/xiaoxi_tan')}";
+            $.ajax({
+                type : "POST",
+                url : seeNumUrl,
+                data: {},
+                dataType : "json",
+                success : function(result){
+                    if(result['code'] == 1){
+                        $(".alert_windows1").show();
+                        document.getElementById("xiaoxi_tan").innerHTML = result['info'];
+                    }
+                },
+                error:function(){
+                    //alert();
+                }
+            });
+        }
+        }
+        $(function(){
+            setInterval(xiaoxi_tan, 1000);
+        });
+        function xiaoxi_close() {
+            var seeNumUrl = "{:url('index/xiaoxi_close')}";
+            $.ajax({
+                type : "POST",
+                url : seeNumUrl,
+                data: {},
+                dataType : "json",
+            });
+            $(".alert_windows1").hide();
+        }
+        if(uid){
+        //通知弹窗
+            function tongzhi_tan() {
+                var seeNumUrl = "{:url('index/tongzhi_tan')}";
+                $.ajax({
+                    type : "POST",
+                    url : seeNumUrl,
+                    data: {},
+                    dataType : "json",
+                    success : function(result){
+                        if(result['code'] != 0){
+                            $(".alert_windows2").show();
+                            document.getElementById("tongzhi_tan").innerHTML = result['code'];
+                        }
+                    },
+                    error:function(){
+                        //alert();
+                    }
+                });
+            }
+        }
+        $(function(){
+            setInterval(tongzhi_tan, 1000);
+        });
+        function tongzhi_close() {
+            var seeNumUrl = "{:url('index/tongzhi_close')}";
+            $.ajax({
+                type : "POST",
+                url : seeNumUrl,
+                data: {},
+                dataType : "json",
+            });
+            $(".alert_windows2").hide();
+            setTimeout(function(){
+                location.reload();
+            },100);
+        }
+        
+        function shiming_alert(txt,txt1){
+            $(".hscysm-model-title").text(txt1);
+            hsycms.alert('alert',txt,function(){
+                hsycms.close('alert');
+                location.reload();
+                location.href="{:url('my/shiming')}"
+            })
+        }
+    </script>

@@ -1,0 +1,61 @@
+
+
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body">
+        
+        <div class="layui-form-item">
+           
+            <label class="layui-form-label">会员</label>
+            <div class="layui-input-block">
+                <input name="dd" placeholder="" value="{$tel}" class="layui-input" readonly="">
+                <input type="hidden" name="uid" placeholder="" value="{$uid}" class="layui-input" readonly>
+                
+            </div>
+        </div>
+        <div class="layui-form-item">
+            
+            <label class="layui-form-label label-required">姓名</label>
+            <div class="layui-input-block">
+                <input name="admin_name" placeholder="请输入跟进人名字" value="" class="layui-input">
+                
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">跟进记录</label>
+            <div class="layui-input-block">
+                <input name="text" required value="" placeholder="请如实输入跟进情况" class="layui-input">
+            </div>
+        </div>
+
+           
+        <table class="layui-table margin-top-15" lay-filter="tab" lay-skin="line" style="margin-left:40px;width:95%;">
+        <thead>
+        <tr>
+            <th lay-data="{field:'name',width:200}" class='text-left nowrap' width="20%">跟进人</th>
+            <th lay-data="{field:'text',width:400}"class='text-left nowrap' width="60%">跟进记录</th>
+            <th lay-data="{field:'etime',width:200}" class='text-left nowrap' width="20%">跟进时间</th>
+        
+        </tr>
+        </thead>
+         {volist name='bk_info' id='vo'} 
+        <tbody>
+        <tr>
+            <td class='text-left nowrap'>{$vo.admin_name}</td>
+            <td class='text-left nowrap'>{$vo.text}</td>
+            <td class='text-left nowrap'>{$vo.addtime|format_datetime}</td>
+        </tr>
+        </tbody>
+        {/volist}
+        </table>
+     
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+    <script>window.form.render();</script>
+</form>
+
+

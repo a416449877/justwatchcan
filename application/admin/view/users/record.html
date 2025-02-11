@@ -1,0 +1,154 @@
+{extend name='main'}
+{block name="content"}
+<style>
+    .layui-table-cell{
+   height:auto;
+   overflow:visible;
+   text-overflow:inherit;
+   white-space:normal;
+ }
+.text-center{
+    text-align: center;
+}
+</style>
+<script>
+    // 复制剪切板
+function copyContent(content) {
+    var oInput = document.createElement('input');
+    oInput.value = content;
+    document.body.appendChild(oInput);
+    oInput.select(); // 选择对象
+    document.execCommand("Copy"); // 执行浏览器复制命令
+    oInput.className = 'oInput';//设置class名
+    document.getElementsByClassName("oInput")[0].remove();//移除这个input
+    layer.msg('复制成功！', {icon: 1, time: 3000});
+};
+
+</script>
+<div class="think-box-shadow">
+    <fieldset>
+        <legend>条件搜索</legend>
+        <form class="layui-form layui-form-pane form-search" action="{:request()->url()}" onsubmit="return false" method="get" autocomplete="off">
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">用户名称</label>
+                <div class="layui-input-inline">
+                    <input name="user_name" value="{$Think.get.user_name|default=''}" placeholder="请输入用户名称" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">操作用户</label>
+                <div class="layui-input-inline">
+                    <input name="action_user" value="{$Think.get.action_user|default=''}" placeholder="请输入手机号码" class="layui-input">
+                </div>
+            </div>
+        
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">操作类型</label>
+                <div class="layui-input-inline">
+                    <select name="type" id="select_type">
+                        <option value="">所有状态</option>
+                        <option value="1" {eq name="Think.get.type" value="1"}selected="selected"{/eq}>编辑用户银行卡</option>
+                        <option value="100" {eq name="Think.get.type" value="100"}selected="selected"{/eq}>用户编辑提现信息</option>
+                        <option value="2" {eq name="Think.get.type" value="2"}selected="selected"{/eq}>用户加扣款</option>
+                        <option value="3" {eq name="Think.get.type" value="3"}selected="selected"{/eq}>编辑用户资料</option>
+                        <option value="4" {eq name="Think.get.type" value="4"}selected="selected"{/eq}>修改用户密码</option>
+                        <option value="5" {eq name="Think.get.type" value="5"}selected="selected"{/eq}>编辑用户状态</option>
+                        <option value="6" {eq name="Think.get.type" value="6"}selected="selected"{/eq}>重置今天任务量</option>
+                        <option value="7" {eq name="Think.get.type" value="7"}selected="selected"{/eq}>卡单设置</option>
+                        <option value="8" {eq name="Think.get.type" value="8"}selected="selected"{/eq}>提现处理</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+            </div>
+        </form>
+    </fieldset>
+    <table class="layui-table margin-top-15" lay-filter="tab" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th lay-data="{field:'id',width:80}" class='text-left nowrap'>ID</th>
+            <th lay-data="{field:'action_user'}" class='text-left nowrap'>操作账号</th>
+            <th lay-data="{field:'user_name'}" class='text-left nowrap'>用户账号</th> 
+            <th lay-data="{field:'action_ip'}" class='text-left nowrap'>操作IP</th>
+            <th lay-data="{field:'memo'}" class='text-left nowrap'>操作说明</th>
+            <th lay-data="{field:'update_time'}" class='text-left nowrap'>操作时间</th>
+            <th lay-data="{field:'order_num'}" class='text-center nowrap'>操作参数</th>
+            <th lay-data="{field:'user_agent'}" class='text-center nowrap'>浏览器</th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr style="height:200px">
+            <td class='text-left nowrap'>{$vo.id}</td>
+            <td class='text-left nowrap'>{$vo.action_user}</td>
+            <td class='text-left nowrap'>{$vo.user_name}</td>
+            <td class='text-left nowrap'>{$vo.action_ip}</td>
+            <td class='text-left nowrap'>{$vo.memo}</td>
+            <td class='text-left nowrap'>{$vo.update_time|date="Y-m-d H:i:s"}</td>
+            <td class='text-center nowrap'>
+                <button data-dbclick class="layui-btn layui-btn-sm layui-btn-normal show_conent" data-content='{:getParseContent($vo['type'], $vo['params'])}'>查看参数</button>
+            </td>
+            <td class='text-left nowrap'>
+                <button data-dbclick class="layui-btn layui-btn-sm layui-btn-normal show_conent" data-content="{$vo['user_agent']}">查看参数</button>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <script>
+        
+        function del_user(id){
+            layer.confirm("确认要删除吗，删除后不能恢复",{ title: "删除确认" },function(index){
+                $.ajax({
+                    type: 'POST',
+                    url: "{:url('delete_user')}",
+                    data: {
+                        'id': id,
+                        '_csrf_': "{:systoken('admin/users/delete_user')}"
+                    },
+                    success:function (res) {
+                        layer.msg(res.info,{time:2500});
+                        location.reload();
+                    }
+                });
+            },function(){});
+        }
+    </script>
+    <script>
+        var table = layui.table;
+        form.render();
+        //转换静态表格
+        var limit = Number('{$Think.get.limit}'); 
+        if(limit==0) limit=20;
+        table.init('tab', {
+            cellMinWidth:120,
+            skin: 'line,row',
+            size: 'lg',
+            limit: limit
+        });
+        $('.show_conent').click(function(){
+            console.log(1);
+            var msg = $(this).data('content');
+            layer.open({
+                type: 1 //此处以iframe举例
+                ,title: '详细参数'
+                ,area: ['390px', '260px']
+                ,shade: 0
+                ,maxmin: true
+                // ,offset: [ //为了演示，随机坐标
+                //   Math.random()*($(window).height()-300)
+                //   ,Math.random()*($(window).width()-390)
+                // ] 
+                ,content: '<div style="margin:10px 10px;line-height:28px;">' + msg + "</div>"
+                
+                ,btn: false //只是为了演示
+                
+            });
+        });
+    </script>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}

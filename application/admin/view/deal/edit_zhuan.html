@@ -1,0 +1,94 @@
+{extend name='admin@main'}
+
+{block name="content"}
+
+
+<form onsubmit="return false;" id="GoodsForm" data-auto="true" method="post" class='layui-form layui-card' autocomplete="off">
+    <div class="layui-card-body think-box-shadow padding-left-40">
+        <div class="layui-form-item layui-row layui-col-space15">
+            <label class="layui-col-xs9 relative">
+                <span class="color-green">奖品名称</span>
+                <input name="name" required class="layui-input" placeholder="请输入广告名称" value="{$info.name}">
+                <input type="hidden" name="id" value="{$info.id}">
+                <input type="hidden" name="_csrf_" value="{:systoken('admin/eheel/edit')}">
+            </label>
+        </div>
+        <div class="layui-form-item layui-row layui-col-space15">
+            <label class="layui-col-xs9 relative">
+                <span class="color-green">奖品分类</span>
+                <select name="type" lay-filter="Select" id="liketype">
+                    <option value="1" test <?php echo $info['type'] == 1 ? 'selected':' '  ?> class="layui-this">VIP会员</option>
+                    <option value="2" test <?php echo $info['type'] == 2 ? 'selected':' '  ?> class="layui-this">现金红包</option>
+                    <option value="3" test <?php echo $info['type'] == 3 ? 'selected':' '  ?> class="layui-this">任务次数</option>
+                    <option value="4" test <?php echo $info['type'] == 4 ? 'selected':' '  ?> class="layui-this">谢谢参与</option>
+                </select>
+            </label>
+        </div>
+        <div class="layui-form-item layui-row layui-col-space15" id="vip">
+            <label class="layui-col-xs9 relative">
+                <select name="lid">
+                    {foreach $level as $key=>$vo}
+                    <option value="{$vo.level}" test <?php echo $info['lid'] == $vo['level'] ? 'selected':' '  ?> class="layui-this">{$vo.name}</option>
+                    {/foreach}
+                </select>
+            </label>
+        </div>
+        
+        <div class="layui-form-item layui-row layui-col-space15" id="nums">
+            <label class="layui-col-xs9 relative">
+                <span class="color-green">赠送数额</span>
+                <input name="num" required class="layui-input" placeholder="请输入赠送数额" value="{$info.num}" id="num">
+            </label>
+        </div>
+        <div class="layui-form-item layui-row layui-col-space15">
+            <label class="layui-col-xs9 relative">
+                <span class="color-green">中奖率</span>
+                <input style="width:98%;float: left;" name="bili" required class="layui-input" placeholder="请输入中奖率" value="{$info.bili}"><span style="float:right;">%</span>
+            </label>
+        </div>
+        <div class="layui-form-item text-center">
+            <button class="layui-btn" type="submit">提交</button>
+            <button class="layui-btn layui-btn-danger" ng-click="hsitoryBack()" type="button">取消</button>
+        </div>
+
+    </div>
+</form>
+{/block}
+{block name='script'}
+<script type="text/JavaScript">
+    window.form.render();
+
+    layui.use('form', function () {    var form = layui.form;    var category = 0;    var categoryName = '';
+        form.on('select(Select)', function (data) {
+            category = data.value;
+            if(category == 1){
+                $("#vip").show();
+                $("#cid").hide();
+                $("#nums").hide();
+                $("#cid").empty();
+                $("#num").attr("value",'');
+            }
+            if(category == 2){
+                $("#nums").show();
+                $("#cid").hide();
+                $("#vip").hide();
+                $("#cid").empty();
+                $("#vip").empty();
+            }
+            if(category == 3){
+                $("#nums").show();
+                $("#cid").show();
+                $("#vip").hide();
+                $("#vip").empty();
+            }
+            if(category == 4){
+                $("#nums").hide();
+                $("#cid").hide();
+                $("#vip").hide();
+                $("#vip").empty();
+                $("#cid").empty()
+            }
+        });
+    });
+</script>
+{/block}

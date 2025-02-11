@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="/p_static1/css/base.css">
+		<title>{:lang('Lucky turntable')}</title>
+		<style>
+			.p_wrapper {
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: url(/p_static1/img/turntable-bg1.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			/* 导航栏 */
+			.p_nav {
+				box-sizing: border-box;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 3.1rem;
+				font-size: 1rem;
+				line-height: 1rem;
+				font-weight: 600;
+				color: rgba(255, 255, 255, 1);
+			}
+			.p_nav-arrow {
+				position: absolute;
+				left: 0.75rem;
+				top: 50%;
+				width: 1.65rem;
+				height: 1.65rem;
+				transform: translate(0, -50%);
+			}
+			/* 抽奖规则按钮 */
+			.p_rule-btn {
+				box-sizing: border-box;
+				position: absolute;
+				right: 0;
+				top: 3.425rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 0 0.3rem;
+				height: 1.65rem;
+				font-size: 0.6rem;
+				line-height: 0.6rem;
+				font-weight: 500;
+				background-color: rgba(248, 217, 193, 1);
+				border-radius: 1.75rem 0 0 1.75rem;
+			}
+			/* 转盘 */
+			.p_turntable-wrapper {
+				position: absolute;
+				top: 20%;
+				left: 50%;
+				width: 14.25rem;
+				height: 14.25rem;
+				/* background: url(/p_static1/img/turntable-img1.png) no-repeat;
+				background-size: 100% 100%; */
+				transform: translate(-50%, 0);
+			}
+			/* canvas画板尺寸 */
+			.p_turntable-canvas {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				width: 11.8rem;
+				height: 11.8rem;
+			}
+			.p_turntable-bg {
+				width: 100%;
+				height: 100%;
+			}
+			.p_turntable-arrow {
+				position: absolute;
+				top: 0;
+				left: 50%;
+				width: 1.65rem;
+				height: 2.5rem;
+				transform: translate(-45%, -20%);
+			}
+			.p_turntable-btn {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 3.6rem;
+				height: 3.6rem;
+				transform: translate(-50%, -50%);
+			}
+			/* 转盘底座 */
+			.p_turntable-bottom {
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				width: 17rem;
+				height: 4rem;
+				transform: translate(-50%, 86%);
+				z-index: -1;
+			}
+			/* 提示条 */
+			.p_tips-wrapper {
+				position: absolute;
+				bottom: 16.5%;
+				left: 50%;
+				width: 11rem;
+				height: 1.4rem;
+				overflow: hidden;
+				transform: translate(-50%, 0);
+			}
+			.p_tip {
+				width: 100%;
+			}
+			.p_tip-item {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 11rem;
+				height: 1.4rem;
+				font-size: 0.6rem;
+				line-height: 0.6rem;
+				color: rgba(36, 44, 107, 1);
+			}
+			/* 链接 */
+			.p_link-wrapper {
+				box-sizing: border-box;
+				position: absolute;
+				bottom: 4%;
+				padding: 0 1.875rem;
+				width: 100%;
+			}
+			.p_link-title {
+				font-size: 0.6rem;
+				line-height: 0.6rem;
+				font-weight: 600;
+				color: rgba(255, 255, 255, 0.8);
+			}
+			.p_link {
+				margin-top: 0.675rem;
+				padding-right: 4.5rem;
+				font-size: 0.6rem;
+				line-height: 0.8rem;
+				font-weight: 600;
+				color: rgba(255, 255, 255, 1);
+				word-break: break-word;
+			}
+			.p_copy-link-btn {
+				position: absolute;
+				right: 1.875rem;
+				bottom: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 3.75rem;
+				height: 1.5rem;
+				font-size: 0.6rem;
+				line-height: 0.6rem;
+				font-weight: 600;
+				color: rgba(36, 44, 107, 1);
+				background: linear-gradient(90deg, rgba(225, 227, 252, 1) 0%, rgba(173, 177, 217, 1) 100%);
+				border-radius: 0.25rem;
+			}
+			/* 规则弹窗 */
+			.p_rule-pop-up-wrapper {
+				display: none;
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, .3);
+				z-index: 1000;
+			}
+			.p_rule-pop-up {
+				box-sizing: border-box;
+				position: absolute;
+				top: 20%;
+				left: 50%;
+				width: 80%;
+				height: 55vh;
+				background-color: #fff;
+				border-radius: 0.5rem;
+				transform: translate(-50%, 0);
+			}
+			.p_rule-pop-up-title {
+				position: relative;
+				box-sizing: border-box;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 3.25rem;
+				font-size: 0.8rem;
+				font-weight: bold;
+				line-height: 1.05rem;
+				color: rgba(173, 94, 33, 1);
+				background: url(/p_static1/img/index_bg-5.svg) no-repeat;
+				background-size: cover;
+			}
+			.p_rule-pop-up-content {
+				padding: 0.5rem 0.625rem 0.5rem;
+				overflow: auto;
+			}
+			.p_rule-pop-up-text {
+				height: 11.1rem;
+				font-size: 0.7rem;
+				line-height: 1.05rem;
+				color: rgba(173, 94, 33, 1);
+				overflow-y: auto;
+			}
+			.p_rule-pop-up-btn {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 0 0.625rem;
+				height: 2.5rem;
+				font-size: 0.8rem;
+				line-height: 0.8rem;
+				color: rgba(248, 217, 193, 1);
+				background-color: rgba(36, 44, 107, 1);;
+				border-radius: 0.5rem;
+			}
+			/* 提示弹窗 */
+			.p_pop-up {
+				display: none;
+				position: fixed;
+				top: 42.5%;
+				left: 50%;
+				/* display: flex; */
+				justify-content: center;
+				align-items: center;
+				padding: 2rem 1.4rem;
+				font-size: 0.8rem;
+				line-height: 0.8rem;
+				font-weight: 600;
+				color: rgba(255, 255, 255, 1);
+				background-color: rgba(35, 36, 36, 0.8);
+				border-radius: 0.5rem;
+				transform: translate(-50%, 0);
+			}
+			.success-icon::before {
+				display: block;
+				content: '';
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 1rem;
+				height: 1rem;
+				margin-right: 0.5rem;
+				background: url(/p_static/img/success-circle.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			/* 分级按钮 */
+			.select_level {
+				position: absolute;
+				top: 3.425rem;
+				left: 0;
+				display: flex;
+				width: 13rem;
+				height: 1.4rem;
+			}
+			.select_level div {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 33.33%;
+				font-size: 0.7rem;
+				line-height: 0.7rem;
+				background-color: #FFEFE3;
+				color: rgba(36, 44, 107, 0.6);
+				border-radius: 0.5rem;
+			}
+			.select_level div.active {
+				font-weight: 700;
+				background-color: #FFDCC2;
+				color: rgba(36, 44, 107, 1);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="p_wrapper">
+			<!-- 导航栏 -->
+			<div class="p_nav">
+				<img src="/p_static1/img/arrowleft_circle_white.png" class="p_nav-arrow" onclick="window.history.go(-1);">
+				<div>{:lang('Lucky turntable')}</div>
+			</div>
+			
+			<!-- 分级按钮 -->
+			<div class="select_level">
+				<!--<div class="active">一级转盘</div>-->
+				<!--<div>二级转盘</div>-->
+				<!--<div>三级转盘</div>-->
+			</div>
+			
+			<!-- 抽奖规则按钮 -->
+			<div class="p_rule-btn" id="rule-btn">{:lang('Rule description')}</div>
+			
+			<!-- 转盘 -->
+			<div class="p_turntable-wrapper">
+				<!-- 转盘背景 -->
+				<img src="/p_static1/img/turntable-img1.png" class="p_turntable-bg">
+				<!-- 转盘底座 -->
+				<img src="/p_static1/img/turntable-img3.png" class="p_turntable-bottom">
+				<canvas id="turntable" class="p_turntable-canvas" width="472" height="472">
+					Your browser does not support canvas, please upgrade your browser
+				</canvas>
+				<img src="/p_static1/img/turntable-img2.png" class="p_turntable-arrow">
+				<img src="/p_static1/img/turntable-img4.png" class="p_turntable-btn" id="turntable-btn">
+			</div>
+			
+			<!-- 提示条 -->
+			<div class="p_tips-wrapper">
+				<div class="p_tip">
+					<div class="p_tip-item">{:lang('恭喜')} 131*****142{:lang('用户获得')}18.8</div>
+					<div class="p_tip-item">{:lang('恭喜')} 151*****172{:lang('用户获得')}108.8</div>
+					<div class="p_tip-item">{:lang('恭喜')} 351*****612{:lang('用户获得')}288</div>
+					<div class="p_tip-item">{:lang('恭喜')} 831*****882{:lang('用户获得')}288</div>
+					<div class="p_tip-item">{:lang('恭喜')} 655*****432{:lang('用户获得')}588</div>
+					<div class="p_tip-item">{:lang('恭喜')} 238*****983{:lang('用户获得')}38.8</div>
+					<div class="p_tip-item">{:lang('恭喜')} 345*****231{:lang('用户获得')}38.8</div>
+				</div>
+			</div>
+			
+			<div class="p_link-wrapper">
+			    <div class="p_link-title" style="text-align:center">{:lang('剩余抽奖次数')} ：{$zp_num}</div>
+				<!--<div class="p_link-title">Invite link</div>-->
+				<!--<div class="p_link">https://43.129.73.93/index/user/register/invite_code/3ret5.html</div>-->
+				<!--<div class="p_copy-link-btn">Copy link</div>-->
+			</div>
+			
+			<!-- 抽奖规则弹窗 -->
+			<div class="p_rule-pop-up-wrapper" id="rule-pop-up">
+				<div class="p_rule-pop-up">
+					<div class="p_rule-pop-up-title">
+						<div>{:lang('Rule descsription')}</div>
+					</div>
+					<div class="p_rule-pop-up-content">
+						<div class="p_rule-pop-up-text">
+							{:lang('lucky_rule')}
+						</div>
+					</div>
+					<div class="p_rule-pop-up-btn" id="pop-up-btn">{:lang('Read')}</div>
+				</div>
+			</div>
+			
+			<!-- 提示弹窗 -->
+			<div class="p_pop-up" id="pop-up"></div>
+			
+		</div>
+		
+		<script src="/p_static1/js/jquery.min.js"></script>
+		<script>
+		    var awrad = {:json_encode($awrad)};
+		    var pro = {:json_encode($pro)};
+		    var zp_num = {$zp_num};
+			// 转盘参数
+			let turnplate = {
+				restaraunts: awrad, // 大转盘奖品名称
+				colors: ['#FFDCC2','#FFEFE3','#FFDCC2','#FFEFE3','#FFDCC2','#FFEFE3','#FFDCC2','#FFEFE3'], // 大转盘奖品区块对应背景颜色
+				randomRate: pro, // 转盘中奖概率
+				outsideRadius: 236, // 转盘外圆的半径
+				insideRadius: 30, // 转盘内圆的半径
+				textRadius: 155, // 转盘奖品位置距离圆心的距离
+				startAngle: -Math.PI / 2, // 开始角度
+				isRotate: false, // false: 停止，true: 旋转
+			}
+
+			// 显示提示弹窗
+			function showPopup(text, icon) {
+				$('#pop-up').removeClass('success-icon');
+				if (icon === 'success') { // success才显示成功图标
+					$('#pop-up').addClass('success-icon');
+				}
+				$('#pop-up').css('display', 'flex').text(text);
+				setTimeout(() => {
+					$('#pop-up').css('display', 'none');
+				}, 2000);
+			}
+
+			/**
+			 * 上下轮播公告栏
+			 * 1、创建一个元素复制第一个元素的文本，并添加到列表最后一个位置
+			 * 2、每间隔时间就向上移动，距离就是元素本身的高度
+			 * 3、当移动到最后一位时，就初始化位置，回归到第一个位置
+			 */
+			function scrollText() {
+				let id = 1; // 记录元素移动的位置
+				
+				let firstText = $('.p_tip-item').eq(0).text(); // 第一个元素的文本
+				let copyItem = $("<div></div>").text(firstText).addClass('p_tip-item'); // 创建元素并赋值
+				$('.p_tip').append(copyItem);
+				
+				// 定时滚动
+				setInterval(function() {
+					if (id >= $('.p_tip-item').length) { // 超出范围时，初始化状态
+						$('.p_tip').css({
+							'transition': 'none',
+							'transform': 'translateY(0px)'
+						})
+						id = 1;
+					}
+					let itemHeight = $('.p_tip-item').height(); // 单个信息元素的高度
+					$('.p_tip').css({
+						'transition': 'all 1s',
+						'transform': `translateY(-${itemHeight * id}px)`
+					})
+					id = id + 1;
+				}, 2000);
+			}
+			
+			/**
+			 * 绘制转盘
+			 */
+			function draw() {
+				let canvas = $('#turntable')[0]; // 转盘画布
+				if (canvas.getContext) { // 先判断是否有上下文
+					let ctx = canvas.getContext('2d'); // 获取画布上下文
+					let pi = Math.PI; // 180角度
+					// 根据奖品个数计算圆周角度
+					let arc = 2 * pi / (turnplate.restaraunts.length);
+					
+					ctx.clearRect(0, 0, 472, 472); // 清除所有内容
+					ctx.save(); // 锁画布（保存之前的画布状态）
+					
+					// 绘制扇形面板
+					for (let i = 0; i < turnplate.restaraunts.length; i++) {
+						ctx.save(); // 锁画布（保存之前的画布状态）
+						let angle = turnplate.startAngle + i * arc; // 起始弧线角度
+						ctx.strokeStyle = '#FFEFE3'; // 设置笔触的颜色、渐变或模式
+						ctx.fillStyle = turnplate.colors[i]; // 设置填充颜色
+						ctx.beginPath();
+						// arc(x,y,r,起始角,结束角,绘制方向)方法创建弧/曲线（用于创建圆或部分圆）
+						ctx.arc(236, 236, turnplate.outsideRadius, angle, angle + arc, false);
+						ctx.arc(236, 236, turnplate.insideRadius, angle + arc, angle, true);
+						ctx.stroke(); // 绘制
+						ctx.fill(); // 填充
+						
+						ctx.restore(); // 把当前画布返回到上一个save()状态之前
+					}
+					
+					// 绘制奖品
+					for (let i = 0; i < turnplate.restaraunts.length; i++) {
+						ctx.save(); // 锁画布（保存之前的画布状态）
+						let angle = turnplate.startAngle + i * arc; // 起始弧线角度
+						let text = turnplate.restaraunts[i]; // 奖品名称
+						let line_height = 30; // 文字行高
+						
+						// 根据奖品位置距离圆心的距离，以及弧线角度计算出放置坐标位置
+						// 使用translate方法移动画布的坐标原点
+						ctx.translate(236 + Math.cos(angle + arc / 2) * turnplate.textRadius, 236 + Math.sin(angle + arc / 2) * turnplate.textRadius);
+						// rotate方法旋转当前的绘图
+						ctx.rotate(angle + arc / 2 + Math.PI / 2);
+						ctx.fillStyle = 'rgba(36, 44, 107, 1)'; // 设置填充颜色
+						ctx.font = '600 26px Roboto-Bold'; // 设置字体
+						
+						// 根据字体情况和长度进行换行
+				// 		if (text.indexOf('\n') > 0) { // 有换行符
+				// 			let texts = text.split('\n');
+				// 			for (let j = 0; j < texts.length; j++) {
+				// 				ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+				// 			}
+				// 		} else if (text.indexOf('\n') == -1 && text.length > 6) { // 奖品名称长度超过一定范围
+				// 			text = text.slice(0, 6) + '||' + text.slice(6);
+				// 			let texts = text.split('||');
+				// 			for (let j = 0; j < texts.length; j++) {
+				// 				ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+				// 			}
+				// 		} else {
+							ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+				// 		}
+						ctx.restore(); // 把当前画布返回到上一个save()状态之前
+						
+					}
+					
+				}
+			}
+			
+			/**
+			 * 设置中奖概率
+			 */
+			function setProbability() {
+				// 随机生成1-100范围的数字
+				let rNum = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+				// 旋转角度
+				let rReg;
+				// 根据奖品个数算出圆周角度的数值（不是角度，只是数值）
+				let arcNumber = 360 / (turnplate.restaraunts.length);
+				
+				// 创建一个1-100的数组
+				let arr = new Array(100);
+				for (let i = 0; i < arr.length; i++) {
+					arr[i] = i + 1;
+				}
+				
+				/**
+				 * 假设 谢谢参与 的概率为93%，设置出现随机数1-93时，就设置旋转角度在 谢谢参与 的范围
+				 * 2元、3元、4元、5元、6元、7元、8元概率都为1%（原理同上）
+				 * 但是设置概率不能有小数点，不精确
+				 */
+				
+				for (let i = 0; i < turnplate.randomRate.length; i++) { // 遍历奖品
+					let rate = turnplate.randomRate[i].split('%')[0]; // 奖品对应的中奖概率
+					let arrNum = arr.splice(0, rate); // 根据概率，设置出现的数字数组
+					// 判断随机生成的数字位于哪个数字范围，来确定是哪个奖品，同时确定旋转到指定奖品角度范围
+					if (rNum >= arrNum[0] && rNum <= arrNum[arrNum.length - 1]) {
+						// Math.floor(Math.random() * (max - min + 1) + min + 360 * n); min~max角度范围，n 转几圈以上
+						rReg = Math.floor(Math.random() * (arcNumber + 1) + i * arcNumber + 360 * 10);
+					}
+				}
+				
+				return rReg; // 返回旋转角度
+			}
+			
+			/**
+			 * 旋转转盘
+			 */
+			function rotate() {
+			    
+			    if(zp_num <= 0){
+			        alert("{:lang('抽奖次数不足')}");
+			        return; 
+			    }
+			    
+				if (turnplate.isRotate) return; // 抽奖进行中直接返回不操作
+				
+				turnplate.isRotate = true;
+				// 初始化
+				$('#turntable').css('transition', 'none');
+				$('#turntable').css('transform', 'translate(-50%, -50%) rotate(0deg)');
+				
+				// 根据奖品个数算出圆周角度的数值（不是角度，只是数值）
+				let arcNumber = 360 / (turnplate.restaraunts.length);
+				
+				setTimeout(function() {
+					// Math.floor(Math.random() * (max - min + 1) + min + 360 * n); min-max角度范围，n 转几圈以上
+					let random = setProbability(); // 获取旋转角度
+					$('#turntable').css('transition', 'transform 3s');
+					$('#turntable').css('transform', `translate(-50%, -50%) rotate(-${random}deg)`); //设置为负数，顺时针转动
+					
+					// 根据旋转角度，判断是哪个奖品，并提示
+					setTimeout(function() { // 等转完在提示
+						let randomNum = random % 360; // 用于判断位置
+						for (let i = 0; i < turnplate.restaraunts.length; i++) {
+							if (randomNum >= (arcNumber * i) && randomNum < (arcNumber * (i + 1))) {
+								// showPopup(turnplate.restaraunts[i]);
+								// console.log(turnplate.restaraunts[i],i)
+								
+								$.ajax({
+                                    url: '/index/ctrl/awrad',
+                                    data: {i:i},
+                                    dataType: 'json',
+                                    type: 'POST',
+                                    success: function (data) {
+                                        console.log(data)
+                                        alert(data.msg)
+                                        if(data.code == 200){
+                                            location.href = ''
+                                        }
+                                    }
+                                });
+							}
+						}
+						
+						turnplate.isRotate = false; // 解除旋转限制
+					}, 3100);
+				}, 100);
+				
+			}
+			
+			// 初始化
+			function init() {
+				draw();				
+				scrollText();
+				
+				// 显示隐藏规则弹窗
+				$('#rule-btn').click(function() {
+					$('#rule-pop-up').show();
+				});
+				$('#pop-up-btn').click(function() {
+					$('#rule-pop-up').hide();
+				});
+				
+				// 点击抽奖开始
+				$('#turntable-btn').click(rotate);
+				
+				// 切换分级转盘
+				$('.select_level div').click(function() {
+					$('.select_level div').removeClass('active');
+					$(this).addClass('active');
+				})
+			}
+			
+			init();
+		
+		</script>
+		
+	</body>
+</html>

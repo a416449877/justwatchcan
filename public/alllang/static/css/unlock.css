@@ -1,0 +1,392 @@
+.sub-tiitle {
+  width: 100%;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  text-shadow: 0 0 0 #333;
+}
+
+.flex-bt,
+.input-withdrawal,
+.input-password,
+.submit-btn {
+  width: 100%;
+  display: block;
+  padding: 15px 20px;
+  font-size: 15px;
+  margin: 0 auto;
+  background-color: #F09A4C;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  background-color: #FF5D24;
+  color: #fff;
+  margin-top: 25px;
+  font-size: 16px;
+}
+
+.flex-bt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-bankcard {
+  width: 90%;
+  height: 100%;
+  border: none;
+}
+
+.flex-bt>span {
+  color: #999;
+}
+
+.bankcard {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin: 10px auto;
+  color: #fff;
+}
+
+.popup-bankcard {
+  max-height: 50%;
+  bottom: 0;
+  top: auto;
+}
+
+.bankcard>div {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+.bankcard img {
+  width: 30px;
+}
+
+.blance {
+  color: #999;
+  margin-top: 10px;
+  margin-left: 5%;
+}
+
+.instructions {
+  width: 100%;
+  color: #999;
+  margin: 20px auto;
+}
+
+.instructions>p {
+  margin: 4px 0;
+}
+
+.page {
+  background-color: #FAFAFA;
+}
+
+.big-box {
+  width: 88%;
+  margin: 20px auto;
+}
+
+.bank-card {
+  width: 100%;
+  height: 41vw;
+  background: url(../images/ali/Bank-card.png) no-repeat center/100%;
+  position: relative;
+}
+
+.kh {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: HelveticaNeue;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.khkh {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  font-family: HelveticaNeue-Bold;
+  font-size: 18px;
+  color: #FFFFFF;
+  width: 100%;
+  text-align: center;
+}
+
+.ksjn-list {
+  display: flex;
+  align-items: center;
+  font-family: HelveticaNeue-Medium;
+  font-size: 14px;
+  color: #25283B;
+  margin: 10px 0;
+}
+
+.ksjn-list .label {
+  font-family: HelveticaNeue;
+  color: #777777;
+  margin-right: 10px;
+}
+
+.waddjak-box {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  border: .5px solid #e3e3e3;
+  box-sizing: border-box;
+  padding: 20px 12px;
+}
+
+.sjax-wa {
+  display: flex;
+  align-items: center;
+}
+
+.djw-title {
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  color: #777777;
+  margin-right: 10px;
+}
+
+.djw-wuak {
+  border: .5px solid #F09A4C;
+  border-radius: 8px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  color: #F09A4C;
+}
+
+.wdal-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  border: .5px solid #c7c7c7;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding-left: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.wdal-box .label {
+  font-family: HelveticaNeue-Medium;
+  font-size: 24px;
+  color: #303030;
+  letter-spacing: 0;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.wdal-box .value,
+.wdal-box .value input {
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  color: #333;
+  flex: 1;
+  height: 100%;
+}
+
+.wdal-box .value input {
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+}
+
+#picker {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.picker-items {
+  font-size: 16px;
+}
+
+.wdal-box .label.dwa {
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  color: #777777;
+  margin-right: 25px;
+}
+
+.level-box {
+  width: 100%;
+  height: 30vw;
+  background: url(../images/ali/Membership-img.png) no-repeat center/100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+}
+
+.dsai-level {
+  font-family: HelveticaNeue-Bold;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.invite-unlock {
+  margin-top: 15px;
+}
+
+.invite-unlock-title {
+  box-sizing: border-box;
+  padding-left: 10px;
+  font-family: HelveticaNeue-Medium;
+  font-size: 15px;
+  color: #25283B;
+  margin-bottom: 10px;
+}
+
+.invite-unlock-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.unlock-item {
+  width: 30%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.unlock-level {
+  width: 100%;
+  height: 150px;
+  background-color: #fff;
+  border: .5px solid #E3E3E3;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding-top: 15px;
+}
+
+.unlock-level-title {
+  font-family: HelveticaNeue-Medium;
+  font-size: 14px;
+  color: #25283B;
+  letter-spacing: 0;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.unlock-level-des {
+  nt-family: HelveticaNeue-Medium;
+  font-size: 12px;
+  color: #777777;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.unlock-btn {
+  width: 100%;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  color: #fff;
+  background: #F09A4C;
+}
+
+.unlock-btn.unlocked {
+  background: #00A0E8;
+}
+
+.sdahxu {
+  font-family: HelveticaNeue;
+  font-size: 15px;
+  color: #303030;
+  box-sizing: border-box;
+  padding-left: 10px;
+  margin-top: 15px;
+}
+
+.kxwa {
+  text-align: center;
+  margin-top: 10px;
+  font-family: PingFangSC-Regular;
+  font-size: 13px;
+  color: #777777;
+  margin-bottom: 15px;
+}
+
+.sjwka {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.sjwka-item {
+  width: 49%;
+  height: 206px;
+  background: url(../images/ali/Membership-bg.png) no-repeat center/100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.sadko {
+  font-family: HelveticaNeue-Bold;
+  color: #25283B;
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: 18px;
+}
+
+.kjfdsd {
+  margin: 6px auto 8px;
+  font-family: HelveticaNeue-Bold;
+
+  color: #F09A4C;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.icka {
+  font-family: HelveticaNeue-Medium;
+  font-size: 11px;
+  color: #303030;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.djakl {
+  font-family: HelveticaNeue;
+  font-size: 11px;
+  color: #777777;
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: 10px;
+  white-space: nowrap;
+}

@@ -1,0 +1,130 @@
+.page {
+  background-color: #f3f5f6;
+}
+
+.flex-row {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 12px 12px 12px 20px;
+  /* margin-bottom: 10px; */
+  border-top: 1px solid #C7C7C7;
+}
+
+.circle {
+  min-width: 2.2rem;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  border-radius: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  text-shadow: 0 0 #fff;
+}
+
+.circle-1,
+.circle-5 {
+  background-color: #FE6584;
+}
+
+.circle-2 {
+  background-color: #55C7FC;
+}
+
+.circle-3,
+.circle-6 {
+  background-color: #FC9752;
+}
+
+.circle-4 {
+  background-color: #C585FC;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 80%;
+  margin-left: 1rem;
+}
+
+.main-title {
+  color: #303030;
+  font-size: 16px;
+  font-weight: 500;
+  text-shadow: 0 0 #333;
+}
+
+.main-des {
+  width: 100%;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.main-right {
+  min-width: 1rem;
+  font-size: 16px;
+  color: #ACACAC;
+}
+
+.flex-row-left-img {
+  width: 1rem;
+}
+
+.right-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777777;
+  margin-right: 10px;
+}
+
+.right-avatar-icon {
+  width: 1.4rem;
+}
+
+.head-avatar__wrap {
+  background-image: linear-gradient(180deg, #FFFFFF 0%, #BBC4D2 100%);
+  width: 100%;
+  height: 126px;
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+
+.now-avatart {
+  width: 2.6rem;
+  margin: auto;
+  display: block;
+}
+
+.set-btn {
+  background: #DA7010;
+  border: 1px solid #D06300;
+  border-radius: 4px;
+  width: 86px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px auto 0;
+}
+.avatar-lits__wrap {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.avatar-lits__wrap img {
+  width: 16%;
+  margin-bottom: 10px;
+}
+.avatar-lits__wrap img:not(:nth-child(5n)) {
+  margin-right: calc(20% / 4);
+}

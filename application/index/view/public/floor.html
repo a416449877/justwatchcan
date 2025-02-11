@@ -1,0 +1,45 @@
+
+    <div class="footer" style="backdrop-filter:none;background-image: linear-gradient(#FFFFFF, #D4E4FF);">
+        <div class="no-gutters">
+          <div class="col-auto mx-auto">
+            <div class="row no-gutters justify-content-center" >
+              
+              <div class="col-auto">
+                <a href="/index/index/home.html" style="height: auto;"   class="btn btn-link-default  <?php if($request->controller()=='Index'){ ?>active<?php }else{ ?><?php } ?>">
+                  <i class="material-icons">home</i>
+                  <p>{$Think.lang.home}</p></a>
+              </div>
+              <div class="col-auto">
+                <a href="/index/order/index.html" style="height: auto;"  class="btn btn-link-default <?php if($request->controller()=='Order'){ ?>active<?php }else{ ?><?php } ?>">
+                  <i class="material-icons">playlist_add_check</i>
+                  <p>{$Think.lang.Record}</p></a>
+              </div>
+              <!-- <div class="col-auto">
+                <a href="/index/rot_order/index.html" style="height: auto;"  class="btn btn-link-default <?php if($request->controller()=='RotOrder'){ ?>active<?php }else{ ?><?php } ?>">
+                  <i class="material-icons">swipe</i>
+                  <p>{$Think.lang.grab}</p></a>
+              </div> -->
+              <!--div class="col-auto">
+                <a href="/index/ctrl/lixibao" class="btn btn-link-default <?php if($request->controller()=='Support'){ ?>active<?php }else{ ?><?php } ?>">
+                  <i class="material-icons">clean_hands</i>
+                  </a>
+              </div-->
+              <!-- <div class="col-auto">
+                <a href="/index/ctrl/newnotice" style="height: auto;" class="btn btn-link-default <?php if($request->controller()=='Ctrl'){ ?>active<?php }else{ ?><?php } ?>">
+                  <i class="material-icons">clean_hands</i>
+                 <p>{$Think.lang.homenews}</p></a>
+              </div> -->
+              <div class="col-auto">
+                <a href="{$kfcode}" style="height: auto;" class="btn btn-link-default <?php if($request->controller()=='Ctrl'){ ?>active<?php }else{ ?><?php } ?>">
+                  <i class="material-icons">support_agent</i>
+                 <p>{$Think.lang.Service}</p></a>
+              </div>
+              <div class="col-auto">
+                <a href="/index/my/index.html" style="height: auto;" class="btn btn-link-default <?php if($request->controller()=='My'){ ?>active<?php }else{ ?><?php } ?>">
+                  <i class="material-icons">person</i>
+                  <p>{$Think.lang.Account}</p></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

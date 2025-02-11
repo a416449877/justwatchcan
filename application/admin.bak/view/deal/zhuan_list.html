@@ -1,0 +1,42 @@
+{extend name='admin@main'}
+{block name="content"}
+<div class="think-box-shadow">
+    <table class="layui-table margin-top-15" lay-skin="line">
+        {notempty name='lists'}
+        <thead>
+        <tr>
+            <th class='text-left nowrap'>奖品名称</th>
+            <th class='text-left nowrap'>奖品分类</th>
+            <th class='text-left nowrap'>赠送数额</th>
+            <th class='text-left nowrap'>中奖率</th>
+            <th class='text-left nowrap'>操作</th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $lists as $key=>$vo}
+        <tr>
+            <td class='text-left nowrap'>{$vo.name}</td>
+            <td class='text-left nowrap'>
+                {if $vo.type eq 1}
+                VIP会员
+                {elseif $vo.type eq 2/}
+                现金红包
+                {elseif $vo.type eq 3/}
+                任务次数
+                {elseif $vo.type eq 4/}
+                谢谢参与
+                {/if}
+            </td>
+            <td class='text-left nowrap'>{$vo.num}</td>
+            <td class='text-left nowrap'>{$vo.bili}%</td>
+            <td class='text-left nowrap'>
+                <a data-dbclick class="layui-btn layui-btn-xs" data-title="编辑" data-open='{:url("admin/deal/edit_zhuan")}?id={$vo.id}'>编 辑</a>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+</div>
+
+{/block}

@@ -1,0 +1,51 @@
+<?php /*a:1:{s:70:"/www/wwwroot/movieboostvip.com/application/index/view/order/index.html";i:1737604166;}*/ ?>
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Records</title><link rel="stylesheet" href="/static_en/css/css.css"></head><body class="bodybg"><div class="header"><div class="logo"><a href="/index/index/home.html"><img src="/static_en/img/Keap-Logo-02.png" alt=""></a></div><div class="user"><a href="/index/my/index.html"><img src="/static_en/img/BG-021.png" alt=""><span>Profile</span></a></div></div><div class="records"><div class="tabnav"><ul><li class=" <?php echo !$status ? 'on' : ''?>"><a href="/index/order/index.html">All</a></li><li class="<?php echo $status == -1 ? 'on' : ''?>" ><a href="/index/order/index.html?status=-1">Pending</a></li><li class="<?php echo $status == 1 ? 'on' : ''?>" ><a href="/index/order/index.html?status=1">Completed</a></li><!--<li class="<?php echo $status == 5 ? 'on' : ''?>" ><a href="/index/order/index.html?status=5">Rejected</a></li>--></ul></div><div class="tabbox"><div class="item on"><ul><?php if($list): ?><?php endif; if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><li><div class="t"><img src="<?php echo htmlentities($v['goods_pic']); ?>" alt=""><div class="info"><!-- <p><?php echo htmlentities($v['goods_name']); ?></p> --><h2><?php echo htmlentities($v['goods_name']); ?></h2></div></div><div class="time"><?php echo (date("Y-m-d H:i:s",$v['addtime'])); ?></div><div class="b"><div class="l"><p>Total Balance</p><p>Ratio</p><p>Today Profit</p></div><div class="r"><p>Rp <?php echo htmlentities($v['num']); ?></p><p><?php echo htmlentities($v['commission']/$v['num']*100); ?>%
+</p><p>Rp <?php echo htmlentities($v['commission']); ?></p></div></div><div class="tip" onclick="tijiao('<?php echo htmlentities($v['id']); ?>')" style="<?php echo $v['status']==0 ? '':'display:none'; ?>;">Submit</div></li><?php endforeach; endif; else: echo "" ;endif; ?></ul></div></div><!--tabbox--></div><div class="footerfix"><ul><li><a href="/index/index/home.html"><img src="/static_en/img/BG-019.png" alt=""><p>Home</p></a></li><li><a href="/index/index/event"><img src="/static_en/img/BG-010.png" alt=""><p>Event</p></a></li><li class="starting"><a href="/index/rot_order/index"><div class="img"><img src="/static_en/img/BG-02.png" alt=""></div><p >Tickets</p></a></li><li><a href="https://www.boxofficemojo.com/" target="_blank"><img src="/static_en/img/BG-09.png" alt=""><p>Box office</p></a></li><li><a href="/index/my/index.html"><img src="/static_en/img/BG-021.png" alt=""><p>Profile</p></a></li></ul></div><script type="text/javascript" src="/static_en/js/jquery.js"></script><script type="text/javascript" src="/static_en/js/public.js"></script><script type="text/javascript">		 var zhujiTime = 1000;
+         var shopTime = 2000;
+		 function tijiao(id) {
+		 	 loadingShow();
+        var i = 0;
+        var timer = setInterval(function() {
+          i++;
+          if (i == 1) {
+            msgShow("<?php echo htmlentities(app('lang')->get('task_sccpdd')); ?>")
+          } else if (i == 2) {
+            msgShow("<?php echo htmlentities(app('lang')->get('task_ddtjwc')); ?>")
+            var ajaxT = setTimeout(function() {
+              $.ajax({
+                url: "/index/order/do_order",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                  oid: id,
+                  add_id: 99,
+                },
+                success: function(res) {
+                    loadingHide();
+                  if (res.code == 0) {
+                    
+                    alertShow("<?php echo htmlentities(app('lang')->get('task_qd_wc')); ?>");
+                    clearInterval(timer);
+                     var linkTime = setTimeout(function() {
+                      location.reload()
+                    },
+                    1800);
+                  } else {
+                    
+                    alertShow("<?php echo htmlentities(app('lang')->get('zhyebz')); ?>");
+                  }
+                  sumbit = true;
+                },
+                error: function(err) {
+                  sumbit = true;
+                }
+              })
+            },
+            shopTime)
+          }
+        },
+        zhujiTime)	
+        return false;
+    
+      }
+	</script></body></html>

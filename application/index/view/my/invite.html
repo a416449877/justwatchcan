@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>invitation</title>
+	<link rel="stylesheet" href="/static_en/css/css.css">
+</head>
+<body class="bodybg">
+	<div class="headerfix"><div class="back"><a href="javascript:;"><img src="/static_en/img/Icon-04.png" alt=""></a></div><h2>invitation</h2></div>
+	<div class="invitation">
+		<div class="bg">
+			<div class="t"><img src="/static_en/img/logo.png" alt=""><h2>Let's Join Us Now</h2><p>Scan Qr code above or copy<br/>invitation code to join us<br/> now!</p></div>
+			<div class="b">
+				<div class="l"><p>Invitation Code</p><h2 id="target">{$invite_code}</h2> </div>
+				<div style="display:none;" id="copttxt">{$url}</div>
+				<div class="r"><a href="javascript:;" data-clipboard-action="copy" data-clipboard-target="#target" id="copycode">Copy Code</a></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="footer">Copyright © 2023 TMDB All Rights Reserved</div>
+	
+	<script type="text/javascript" src="/static_en/js/jquery.js"></script>
+	<script type="text/javascript" src="/static_en/js/copy.js"></script>
+	<script type="text/javascript" src="/static_en/js/public.js"></script>
+	<script type="text/javascript">
+		var clipboard = new Clipboard('#copycode');
+		clipboard.on('success', function(e) { 
+			msgShow('Copied successfully');
+			e.clearSelection();
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body">
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">用户名称</label>
+            <div class="layui-input-block">
+                <input name="user_name" required placeholder="请输入用户名称" value="{$info.username}" class="layui-input">
+                <input type="hidden" name="_csrf_" value="{:systoken('admin/users/edit_users')}">
+
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">手机号码</label>
+            <div class="layui-input-block">
+                <input name="tel" required placeholder="请输入手机号码" value="{$info.tel}" class="layui-input">
+            </div>
+        </div>
+        
+        <!--<div class="layui-form-item">-->
+        <!--    <label class="layui-form-label label-required">余额修改</label>-->
+        <!--    <div class="layui-input-block">-->
+        <!--        <input name="user_balance" required placeholder="请输入金额" value="{$info.balance}" class="layui-input">-->
+        <!--    </div>-->
+        <!--</div>-->
+
+        <!--<div class="layui-form-item">-->
+        <!--    <label class="layui-form-label label-required">赠送金额</label>-->
+        <!--    <div class="layui-input-block">-->
+        <!--        <input name="balance" type="number" min="0" required placeholder="请输入赠送金额" value="0" class="layui-input" id='wode' onchange='func()'>-->
+        <!--    </div>-->
+        <!--</div>-->
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">赠送充值百分比</label>
+            <div class="layui-input-block">
+                <input name="ka_money_lv" type="text" min="0" required placeholder="赠送充值百分比" value="{$info.ka_money_lv}" class="layui-input">
+            </div>
+        </div>
+        {if($adminid!=10000)}
+        <script>
+            function func(){
+                if($('#wode').val()>50){
+                    $('#wode').val(50);
+                }
+                
+            }
+        </script>
+        {/if}
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">冻结金额</label>
+            <div class="layui-input-block">
+                <input name="freeze_balance" type="number" min="0" required placeholder="冻结金额" value="{$info.freeze_balance}" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">会员等级</label>
+            <div class="layui-input-block">
+                <select name="level" id="selectList">
+                    {foreach $level as $key=>$vo}
+                    <option value="{$vo.level}" <?php echo $info['level']==$vo['level'] ? 'selected': ''; ?> >{$vo.name}</option>
+                    {/foreach}
+                </select>
+                <!--<input name="freeze_balance" type="number" min="0" required placeholder="冻结金额" value="{$info.freeze_balance}" class="layui-input">-->
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">交易状态</label>
+            <div class="layui-input-block">
+                <select name="deal_status" id="selectList">
+
+                    <option value="1" <?php echo $info['deal_status']==1 ? 'selected': ''; ?> >正常</option>
+                    <option value="3" <?php echo $info['deal_status']==3 ? 'selected': ''; ?> >冻结</option>
+
+                </select>
+                <!--<input name="freeze_balance" type="number" min="0" required placeholder="冻结金额" value="{$info.freeze_balance}" class="layui-input">-->
+            </div>
+        </div>
+        
+         <!--div class="layui-form-item">
+            <label class="layui-form-label label-required">今日第几单卡</label>
+            <div class="layui-input-block">
+                <input name="ka_sum" required placeholder="请输入今日第几单卡" value="{$info.ka_sum}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">卡单商品</label>
+            <div class="layui-input-block">
+                <input name="ka_good" ts-selected="{$info.ka_good}" id="EQUIPMENTNAME" required placeholder="请选择卡单商品" value="{$info.ka_good}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">连单商品</label>
+            <div class="layui-input-block">
+                <input name="lian_good" ts-selected="{$info.lian_good}" id="lian_goodselect" required placeholder="请选择连单商品" value="{$info.lian_good}" class="layui-input">
+            </div>
+        </div-->
+        <!--<div class="layui-form-item">
+            <label class="layui-form-label label-required">解决需要充值多少钱</label>
+            <div class="layui-input-block">
+                <input name="ka_money" required placeholder="请输入解决需要充值多少钱" value="{$info.ka_money}" class="layui-input">
+            </div>
+        </div>-->
+
+        <!--<div class="layui-form-item">-->
+        <!--    <label class="layui-form-label">登录密码</label>-->
+        <!--    <div class="layui-input-block">-->
+        <!--        <input name="pwd" placeholder="留空不修改密码" class="layui-input">-->
+        <!--    </div>-->
+        <!--</div>-->
+
+
+        <!--<div class="layui-form-item">-->
+        <!--    <label class="layui-form-label">交易密码</label>-->
+        <!--    <div class="layui-input-block">-->
+        <!--        <input name="pwd2" placeholder="留空不修改交易密码" class="layui-input">-->
+        <!--    </div>-->
+        <!--</div>-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">上级ID</label>
+            <div class="layui-input-block">
+                <input name="parent_id" placeholder="请输入上级ID" value="{$info.parent_id}" class="layui-input" {if($adminid!=10000)} readonly{/if}>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">业务员ID</label>
+            <div class="layui-input-block">
+                <input name="admin_id" placeholder="请输入业务员ID" value="{$info.admin_id}" class="layui-input" {if($adminid!=10000)} readonly{/if}>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">至少完成订单/天</label>
+            <div class="layui-input-block">
+                <input name="admin_id"  value="{$info.order_tx}" class="layui-input">
+            </div>
+        </div> 
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">是否设置为代理</label>
+            <div class="layui-input-block">
+                <select name="agency" id="selectList">
+
+                    <option value="0" <?php echo $info['agency']==0 ? 'selected': ''; ?> >否</option>
+                    <option value="1" <?php echo $info['agency']==1 ? 'selected': ''; ?> >是</option>
+
+                </select>
+                <!--<input name="freeze_balance" type="number" min="0" required placeholder="冻结金额" value="{$info.freeze_balance}" class="layui-input">-->
+            </div>
+        </div>
+
+    </div>
+    <input name="id" type="hidden" value="{$info.id}">
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+
+    <script>
+    layui.config({
+    base: '/static/plugs/layui/ext/',// 第三方模块所在目录
+    version: '' // 插件版本号
+    }).extend({
+        tableSelect:'tableSelect',  // 插件
+    });
+
+        layui.use([ 'tableSelect'], function () {
+        var form = layui.form,
+            $ = layui.$,
+            tableSelect = layui.tableSelect;
+          tableSelect.render({
+           elem: '#EQUIPMENTNAME',//定义输入框input对象 必填
+           checkedKey: 'id',//表格的唯一建值，非常重要，影响到选中状态 必填
+           searchKey: 'title',	//搜索输入框的name值 默认keyword
+           searchPlaceholder: '输入最低价',//搜索输入框的提示文字 默认关键词搜索  
+          
+           table: {
+               url: '/admin/deal/goods_list2',
+               cols: [[
+                   {type:'radio',width:150},
+                   { field: 'id', title: 'ID',width:200},
+                   { field: 'goods_name', title: '名称'},
+                   { field: 'goods_price', title: '价格'},
+                   //{ fixed: '', title: '操作', toolbar: '#equipment-table-tool', width: 80 }
+               ]],
+                limit: 40, //每页默认显示的数量
+           },
+           done: function (elem, data) {
+                //选择完后的回调，包含2个返回值 elem:返回之前input对象；data:表格返回的选中的数据 []
+                //拿到data[]后 就按照业务需求做想做的事情啦~比如加个隐藏域放ID...
+               $('#EQUIPMENTNAME').val(data.data[0].id);
+           }
+       })
+        })
+        layui.use([ 'tableSelect'], function () {
+        var form = layui.form,
+            $ = layui.$,
+            tableSelect = layui.tableSelect;
+          tableSelect.render({
+           elem: '#lian_goodselect',//定义输入框input对象 必填
+           checkedKey: 'id',//表格的唯一建值，非常重要，影响到选中状态 必填
+           searchKey: 'title',	//搜索输入框的name值 默认keyword
+           searchPlaceholder: '输入最低价',//搜索输入框的提示文字 默认关键词搜索  
+          
+           table: {
+               url: '/admin/deal/goods_list2',
+               cols: [[
+                   {type:'radio',width:150},
+                   { field: 'id', title: 'ID',width:200},
+                   { field: 'goods_name', title: '名称'},
+                   { field: 'goods_price', title: '价格'},
+                   //{ fixed: '', title: '操作', toolbar: '#equipment-table-tool', width: 80 }
+               ]],
+                limit: 40, //每页默认显示的数量
+           },
+           done: function (elem, data) {
+                //选择完后的回调，包含2个返回值 elem:返回之前input对象；data:表格返回的选中的数据 []
+                //拿到data[]后 就按照业务需求做想做的事情啦~比如加个隐藏域放ID...
+               $('#lian_goodselect').val(data.data[0].id);
+           }
+       })
+        })
+        
+        
+           
+    </script>
+    <script>window.form.render();</script>
+
+</form>

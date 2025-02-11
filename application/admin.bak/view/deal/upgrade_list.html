@@ -1,0 +1,110 @@
+{extend name='main'}
+
+{block name="content"}
+
+<div class="think-box-shadow">
+    <fieldset>
+        <legend>条件搜索</legend>
+
+
+        <form class="layui-form layui-form-pane form-search" action="{:request()->url()}" onsubmit="return false" method="get" autocomplete="off">
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">用户名称</label>
+                <div class="layui-input-inline">
+                    <input name="username" value="{$Think.get.username|default=''}" placeholder="请输入用户名称" class="layui-input">
+                </div>
+            </div>
+             <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">用户手机号</label>
+                <div class="layui-input-inline">
+                    <input name="tel" value="{$Think.get.tel|default=''}" placeholder="请输入用户手机号" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">业务员</label>
+                <div class="layui-input-inline">
+                    <input name="admin_id" value="{$Think.get.admin_id|default=''}" placeholder="请输入业务员名字" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">发起时间</label>
+                <div class="layui-input-inline">
+                    <input data-date-range name="addtime" value="{$Think.get.addtime|default=''}" placeholder="请选择发起时间" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-inline">
+                    <select name="status" id="selectList">
+                        <option value="">所有状态</option>
+                        <option value="1">正在处理</option>
+                        <option value="2">升级成功</option>
+                        <option value="3">升级失败</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+            </div>
+        </form>
+    </fieldset>
+    
+    <script>form.render()</script>
+    <table class="layui-table margin-top-15" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='list-table-check-td think-checkbox'>
+                <input data-auto-none data-check-target='.list-check-box' type='checkbox'>
+            </th>
+
+            <th class='text-left nowrap'>id</th>
+            <th class='text-left nowrap'>所属业务员</th>
+            <th class='text-left nowrap'>用户手机号</th>
+            <th class='text-left nowrap'>用户名</th>
+            <th class='text-left nowrap'>等级</th>
+            <th class='text-left nowrap'>金额</th>
+            <th class='text-left nowrap'>状态</th>
+            <th class='text-left nowrap'>时间</th>
+            {if auth('do_deposit')}
+                <th class='text-left nowrap'>操作</th>
+            {/if}
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='list-table-check-td think-checkbox'>
+                <input class="list-check-box" value='{$vo.id}' type='checkbox'>
+            </td>
+
+            <td class='text-left nowrap'>{$vo.id}</td>
+            <td class='text-left nowrap'>{$vo.userss}</td>
+            <td class='text-left nowrap'>{$vo.tel}</td>
+            <td class='text-left nowrap'>{$vo.username}</td>
+            <td class='text-left nowrap'><span class="layui-btn layui-btn-xs layui-btn-warm">{$vo.level}</span></td>
+            <td class='text-left nowrap'>¥{$vo.money}</td>
+            <td class='text-left nowrap'>
+                {switch $vo.status}
+                {case 1}待审核{/case}
+                {case 2}审核通过{/case}
+                {case 3}审核驳回{/case}
+                {/switch}
+            </td>
+            <td class='text-left nowrap'>{$vo.addtime|date="Y-m-d H:i:s"}</td>
+            <td class='text-left nowrap'>
+            {if ($vo.status == 1)}
+                <a class="layui-btn layui-btn-xs" data-csrf="{:systoken('admin/deal/do_upgrade')}" data-action="{:url('do_upgrade')}" data-value="id#{$vo.id};status#2">通过</a>
+                <a class="layui-btn layui-btn-xs layui-btn-warm" data-csrf="{:systoken('admin/deal/do_upgrade')}" data-action="{:url('do_upgrade')}" data-value="id#{$vo.id};status#3">驳回</a>
+            {/if}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+
+</div>
+{/block}

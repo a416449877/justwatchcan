@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>starting</title>
+	<link rel="stylesheet" href="/static_en/css/css.css">
+</head>
+<body class="bodybg">
+	<div class="header">
+		<div class="logo"><a href="/"><img src="/static_en/img/Keap-Logo-02.png" alt=""></a></div>
+		<div class="user"><a href="/index/my/index.html"><img src="/static_en/img/BG-011.png" alt=""> <span>Profile</span></a></div>
+	</div>
+	
+	<section class="section starting">
+		<div class="view_one">
+			<div class="t"><h2>Starting</h2><p><!-- {$info.tel} --> 
+			 <?php if($info['level']==0){ ?>
+            <img src="/static_en/img/BG-06.png" alt="">
+           <?php } ?>
+    		<?php if($info['level']==1){ ?>
+                <img src="/static_en/img/BG-05.png" alt="">
+           <?php } ?>
+           <?php if($info['level']==2){ ?>
+                <img src="/static_en/img/BG-04.png" alt="">
+           <?php } ?>
+           <?php if($info['level']==3){ ?>
+                <img src="/static_en/img/BG-03.png" alt="">
+           <?php } ?>
+			
+			</p></div>
+			<div class="b">
+
+				<ul >
+					<li>
+						<div class="l"><img src="/static_en/img/BG-08.png" alt=""></div>
+						<div class="m"><p>Today Profit</p><h2>USDT {:sprintf("%.2f",$day_deal)}</h2></div>
+						<div class="r">Daily earnings are automatically updated</div>
+					</li>
+					<li>
+						<div class="l"><img src="/static_en/img/BG-022.png" alt=""></div>
+						<div class="m"><p>Total Balance</p><h2>USDT {:sprintf("%.2f",$info['balances'])}</h2></div>
+						<div class="r">Profit from each application will be added to the total asset balance</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<!-- <div class="view_two"><img src="/static_en/img/start-img.gif" alt=""></div> -->
+		
+		<div class="view_three">
+			<div class="t"><p>Starting ({$day_d_count}/{$order_num}) </p><a href="javascript:;">Starting Now</a></div>
+			<div class="b ">
+				<ul id="item-list">
+				    <li>
+						<div class="r mr-20">
+							<div class="blue">USDT 5.87</div>
+							<div class="white"><b>¡Que viva México!</b></div>
+						</div>
+						<div class="l"><img src="/upload/0e90dd25209a42e6/b4005be73dc75910.jpg" alt=""></div>
+					</li>
+					<li>
+						<div class="l mr-20"><img src="/upload/96a1615bbfc1252b/1477f2d2773f186f.jpg" alt=""></div>
+						<div class="r">
+							<div class="white"><b>The Point Men</b></div>
+							<div class="blue">USDT 16.85</div>
+						</div>
+					</li>
+					<li>
+						<div class="r mr-20">
+							<div class="blue">USDT 14.63</div>
+							<div class="white"><b>Mummies</b></div>
+						</div>
+						<div class="l"><img src="/upload/63306a54c1992713/623d1286f7cd2220.jpg" alt=""></div>
+					</li>
+					<li>
+						<div class="l mr-20"><img src="/upload/06a663c871cebc9c/891405ce774a4283.jpg" alt=""></div>
+						<div class="r">
+							<div class="white"><b>Manta, Manta - Zwoter Teil</b></div>
+							<div class="blue">USDT 21.45</div>
+						</div>
+					</li>
+					<li>
+						<div class="r mr-20">
+							<div class="blue">USDT 16.23</div>
+							<div class="white"><b>The Machine</b></div>
+						</div>
+						<div class="l"><img src="/upload/d487125b346570a3/c6cbdc0a596dc290.jpg" alt=""></div>
+					</li>
+					<li>
+						<div class="l mr-20"><img src="/upload/9a3b6a37871e8cb7/8290912930b69ceb.jpg" alt=""></div>
+						<div class="r">
+							<div class="white"><b>Hypnotic</b></div>
+							<div class="blue">USDT 21.96</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="tip">
+				<h2>Important Hint</h2>
+				<p>• Working hours: 10:00am-23:00pm</p>
+				<p>For inquiries about applicants, please consult customer support</p>
+			</div>
+		</div>
+	</section>
+	
+	<div class="footerfix">
+		<ul>
+			<li><a href="/index/index/home.html"><img src="/static_en/img/BG-019.png" alt=""><p>Home</p></a></li>
+			<li class="starting"><a href="/index/rot_order/index"><div class="img"><img src="/static_en/img/BG-02.png" alt=""></div><p>Starting</p></a></li>
+			<li><a href="/index/order/index.html"><img src="/static_en/img/BG-09.png" alt=""><p>Records</p></a></li>
+		</ul>
+	</div>
+	
+	<div class="fixinfo">
+		<div class="title"><h2>Rating Submission</h2><a href="javascript:;" class="close"><img src="/static_en/img/upfixclose.png" alt=""></a></div>
+		<div class="thumb"><img id="oimg" src="" alt=""><p id="otitle"></p></div>
+		<div class="uinfo">
+			<form onsubmit="return checkstarting()">
+				<ul class="u1">
+					<li><p>Total amount</p><h2>USDT <span id="ototal"></span></h2></li>
+					<li><p>Profit</p><h2>USDT <span id="yongjin"></span></h2></li>
+				</ul>
+				<ul class="u2">
+					<li><p>Creation time</p><p id="otime"></p></li>
+					<li><p>Rating No.</p><p id="oid"></p></li>
+				</ul>
+				<button >Submit</button>
+			</form>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="/static_en/js/jquery.js"></script>
+	<script type="text/javascript" src="/static_en/js/public.js"></script>
+	<script type="text/javascript">
+		var startflag=false;
+		 var cid = "0";
+      var oid = '';
+      var add_id = '';
+      var countdown = "1",
+      tt1 = 2478;
+		$('.view_three .t a').click(function(){
+			if(startflag){
+				alertShow('Opening hours:11:00:00 - 22:59:59');
+			}else{
+		//	loadingShow();
+			try {
+              grecaptcha.ready(function() {
+                grecaptcha.execute('6LdC99EZAAAAABfzI41Q48ZSd2Pe2aHA_vJ61go4', {
+                  action: 'submit'
+                }).then(function(token) {
+                  // Add your logic to submit to your backend server here.
+                  start(token, 3);
+                });
+              });
+            } catch(e) {
+              console.log(e);
+              start('', 3);
+            }
+				
+			}
+		});
+		
+		$('.fixinfo .close').click(function(){
+			$('.fixinfo').animate({'bottom':'-100%'});
+		});
+		
+		/***********************************请求订单****************************************/
+		function start(token, v) {
+        if (countdown <= 0) {
+          //$('#orderDetail').modal('show');
+          //------------------------------------------------------------------
+          $.ajax({
+            url: "/index/rot_order/submit_order.html" + '?cid=' + cid + '&reCAPTCHA=' + token + '&v=' + v + '&m=' + Math.random(),
+            timeout: 10000,
+            type: 'POST',
+            success: function(data) {
+			
+            if (data.code == -1) { //recharge
+            loadingHide();
+				alertShow(data.info);
+                // setTimeout(function() {
+                //   location.href = "{$kfcode}";
+                // },
+                // 2000);
+              } else if (data.code == -2) { //bank card
+                alertShow(data.info);
+                setTimeout(function() {
+                  location.href = "/index/order/index.html";
+                },
+                2000);
+              }
+              else if (data.code == -4) { //bank card
+                alertShow(data.info);
+                setTimeout(function() {
+                  location.href = "/index/index/home.html";
+                },
+                2000);
+              }else if (data.code == 1) {
+                  loadingHide();
+				alertShow("{$Think.lang.sdnum}");
+              } else if (data.code == 0 && data.oid) {
+                  loadingHide();
+                sessionStorage.setItem('oid', data.oid);
+				msgShow(data.info)
+                qdSuccess(data.oid);
+                oid = data.oid;
+                add_id = data.add_id;
+              } else {
+
+                if (data.info) {
+                  alertShow(data.info);
+                } else {
+				alertShow("Sorry, your order failed. Please order!");
+                }
+              }
+            }
+          });
+        } else {
+          countdown--;
+          setTimeout(function() {
+            start(token, v)
+          },
+          1000);
+        }
+
+      }
+      /***********************************显示订单****************************************/
+	   function qdSuccess(oid) {
+     
+        $.ajax({
+          url: "/index/order/order_info",
+          type: "POST",
+          dataType: "JSON",
+          data: {
+            id: oid
+          },
+          success: function(res) {
+            var data = res.data;
+            if (res.code == 0) {
+              $('#otime').html(data.addtime) 
+              $('#oid').html(data.oid) 
+              $('#otitle').html(data.goods_name) 
+              $('#oimg').attr('src', data.goods_pic) 
+              $('#ototal').html(data.num) 
+              $('#yongjin').html(data.commission) 
+			  
+			  $('.fixinfo').animate({'bottom':'0'});
+            }
+          },
+          error: function(err) {
+            console.log(err)
+          }
+        })
+      }
+      
+      /***********************************提交订单************************************************/
+
+      var zhujiTime = 1000;
+      var shopTime = 2000;
+	function checkstarting(){
+	//	 loadingShow();
+        var i = 0;
+        var timer = setInterval(function() {
+          i++;
+          if (i == 0) {
+            msgShow("{$Think.lang.task_sccpdd}")
+          } else if (i == 1) {
+            msgShow("{$Think.lang.task_ddtjwc}")
+            var ajaxT = setTimeout(function() {
+              $.ajax({
+                url: "/index/order/do_order",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                  oid: oid,
+                  add_id: add_id,
+                },
+                success: function(res) {
+                    loadingHide();
+                  if (res.code == 0) {
+                    
+                    // alertShow("{$Think.lang.task_qd_wc}");
+                    clearInterval(timer);
+                    location.reload()
+                    //  var linkTime = setTimeout(function() {
+                    //   location.reload()
+                    // },
+                    // 1800);
+                  } else {
+                    
+                    alertShow("{$Think.lang.zhyebz}");
+                  }
+                  sumbit = true;
+                },
+                error: function(err) {
+                  sumbit = true;
+                }
+              })
+            },
+            shopTime)
+          }
+        },
+        zhujiTime)	
+        return false;
+		}
+		/*
+		var ajaxT = setTimeout(function() {
+              $.ajax({
+                url: "/index/order/do_order",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                  oid: oid,
+                  add_id: add_id,
+                },
+                success: function(res) {
+                    loadingHide();
+                  if (res.code == 0) {
+                    
+                    alertShow("{$Think.lang.task_qd_wc}");
+                    clearInterval(timer);
+                    var linkTime = setTimeout(function() {
+                     // location.reload()
+                    },
+                    1800);
+                  } else {
+                    
+                    alertShow("{$Think.lang.queding}");
+                  }
+                  sumbit = true;
+                },
+                error: function(err) {
+                  sumbit = true;
+                }
+              })
+            },
+            shopTime)
+		*/
+	</script>
+</body>
+</html>

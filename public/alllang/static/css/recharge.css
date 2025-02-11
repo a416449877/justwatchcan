@@ -1,0 +1,132 @@
+.title {
+  width: 100%;
+  padding: 12px 15px;
+  font-weight: 500;
+  box-sizing: border-box;
+  font-size: 16px;
+  text-shadow: 0 0 0 #333;
+}
+.money-input {
+  display: block;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 15px 20px;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+}
+input.money-input::-webkit-input-placeholder {
+  color: #999;
+}
+input.money-input:-moz-placeholder {
+  color: #999;
+}
+input.money-input::-moz-placeholder {
+  color: #999;
+}
+input.money-input:-ms-input-placeholder {
+  color: #999;
+}
+.choice-money-wrapper {
+  width: 104%;
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between; */
+  box-sizing: border-box;
+  margin-left: -4%;
+  /* padding: 20px; */
+  /* flex-wrap: wrap; */
+}
+.choice-money-num {
+  display: inline-block;
+  width: 20%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  margin: 5px 0 5px 4%;
+  box-sizing: border-box;
+  border: 1px solid #F09A4C;
+  color: #F09A4C;
+}
+.choice-btn {
+  display: block;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  background-color: #F09A4C;
+  margin: 20px auto 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.tip {
+  width: 100%;
+  margin: auto;
+  color: #999;
+}
+.choice-money-num.current {
+  background-color: #F09A4C;
+  color: #fff;
+}
+.big-box {
+  width: 88%;
+  margin: 20px auto;
+}
+.waddjak-box {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  border: .5px solid #e3e3e3;
+  box-sizing: border-box;
+  padding: 20px 12px;
+}
+.sjax-wa {
+  display: flex;
+  align-items: center;
+}
+.djw-title {
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  color: #777777;
+  margin-right: 10px;
+}
+.wdal-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  border: .5px solid #c7c7c7;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding-left: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.wdal-box .label {
+  font-family: HelveticaNeue-Medium;
+  font-size: 24px;
+  color: #303030;
+  letter-spacing: 0;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.wdal-box .value,
+.wdal-box .value input {
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  color: #333;
+  flex: 1;
+  height: 100%;
+}
+
+.wdal-box .value input {
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+}

@@ -1,0 +1,114 @@
+<html lang="zh"><head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>login</title>
+	<link rel="stylesheet" href="/static_en/css/css.css">
+</head>
+<body class="bodybg">
+	<div class="login">
+		<div class="logo">
+			<img src="/static_en/img/Reelgood-Logo-02.png" alt="">
+			<h2> Welcome </h2>
+			<!-- <article>
+				<p>Sign up or log in today to shop and earn cash!</p>
+				<p>Withdrawal to bank account (limited to one</p>
+				<p>mobile number)</p>
+			</article> -->
+		</div>
+		
+		<div class="form">
+			<div class="tit">
+				<div class="t"><h2>Register</h2><a href="login.html"><b>Back To Login<b></a></div>
+				<div class="b">Please register to access more content</div>
+			</div>
+			<form action="" method="post" name="register" onsubmit="return checkRegister()">
+				<div class="item"><p>Username</p><input type="text" name="username" placeholder="Type Here" autocomplete="off"></div>
+				<div class="item"><p>Phone No.</p><input type="text" name="phone" placeholder="Type Here" autocomplete="off"></div>
+				<div class="item"><p>Gender</p><input type="radio" name="gender" value="0" checked="checked">&nbsp;male <input type="radio" name="gender" value="1">&nbsp;female</div>
+				<div class="item"><p>Login Password</p><input type="password" name="password" placeholder="Type Here" autocomplete="off"></div>
+				<div class="item"><p>Confirm Login Password</p><input type="password" name="passworded" placeholder="Type Here" autocomplete="off"></div>
+				<div class="item"><p>Withdraw Password</p><input type="password" name="fundpassword" placeholder="Type Here" autocomplete="off"></div>
+				<div class="item"><p>Confirm withdrawal password</p><input type="password" name="fundpassworded" placeholder="Type Here" autocomplete="off"></div>
+				<!--div class="item end"><p>Gender</p><input type="text" name="gender" value="male" placeholder="Type Here" autocomplete="off"></div-->
+				<div class="item"><p>Invitation Code</p><input type="text" name="invitation" placeholder="Type Here" autocomplete="off" value="{$invite_code}"></div>
+				<div class="agree">
+					<input type="checkbox" name="agree"> I Agree with &nbsp;<a href="javascript:;" class="agreeshow">Terms &amp; Conditions</a>
+				</div>
+				<button type="submit"><img src="/static_en/img/jiantou.png"></button>
+			</form>
+		</div>
+		
+		<div class="foot">Copyright © 2023 Reelgood All Rights Reserved</div>
+	</div>
+	
+	<div class="agreeinfo">
+		<div class="tit"><h2>Terms &amp; Conditions</h2> <a href="javascript:;" class="agreehide"><img src="/static_en/img/Icon-04.png" alt=""></a></div>
+		<div class="article">
+			<article>
+				<p>These terms and conditions are governed by the following terminology and principles of interpretation.  </p>
+				<p>Definition.</p>
+				<p>Agreement: the agency contract and these terms and conditions</p>
+				<p>Profit Fee: the fee set out in the first page of the agency account.</p>
+				<p>Information Provider: the information and documents we provide to you in relation to our agency services.</p>
+				<p>Agency Contract: the agency contract attached to these terms and conditions.</p>
+				<p>Services: the agency services we have agreed to provide to you in relation to the Platform as set out in the Agency Contract.</p>
+			</article>
+			<article>
+				<p>1.0 Interpretation</p>
+				<p>a) Any words following the terms, including, in particular, for example or any similar expression, shall be construed as illustrative and shall not limit the meaning of the words, descriptions, definitions, phrases or terms preceding those terms.</p>
+				<p>b) Capitalised terms used in these terms and conditions (but not defined in these terms and conditions) shall, unless otherwise specified, have the meanings set out in the Agency Contract.</p>
+			</article>
+			<article><p>Terms and Conditions</p></article>
+			<article>
+				<p>These are the terms and conditions on which we provide the Platform Services to you.</p>
+				<p>Please read these terms and conditions carefully before signing the agreement. These terms and conditions tell you who we are, how we will provide the service to you, what to do if there is a problem and other important information. If you think there are any errors in these terms and conditions, please contact Customer Support for feedback. You will be liable to pay a penalty if you act inappropriately in any way during this process.</p>
+				<p>These terms and conditions shall apply to our agreement to the exclusion of all other supplier(s) attempting to impose or incorporate, or imply by trade, custom, practice or course of dealing.</p>
+				<p>If there is more than one supplier(s), you shall be jointly and severally responsible for your obligations and liabilities under this agreement, including your liability. This means that we may take further action against you for any breach of this Agreement and enforce our rights against you for misconduct. We always expect our agents to be aware of and cooperate with us. </p>
+			</article>
+			<article>
+				<p>You may be required to register with the Site. You agree to keep your password confidential and wil be responsible for all use of your account and password. We reserve the right to remove, reclaim, or change a usermame you select if we determine, in our sole discretion, that such username is inappropriate, obscene, or otherwise objectionable.</p>
+			</article>
+			<article>
+				<p>2.0 Liability of agents</p>
+				<p>In accordance with the policy between our company (us, we, us, Reelgood ) and the partner agency (developer), we reserve the right to control the time it takes for an agent to complete the application setup, up to a maximum of 2 hours. In addition, early termination of the product is not permitted as this would result in an interruption of LTV collection. Most importantly, our company (we, us, we,Reelgood Limited) has prepared 3 sets of applications for agents since they joined, but in order to avoid loss of profit, agents must complete all 3 sets of rating setups before they can opt out, otherwise our company will lose money due to your negligence.</p>
+			</article>
+			<article>
+				<p>Copyright © 2024 Reelgood All rights reserved.</p>
+			</article>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="/static_en/js/jquery.js"></script>
+	<script type="text/javascript" src="/static_en/js/public.js"></script><div class="msgpop" style="display: none;"></div>
+<div class="alertpop">
+	<div class="box">
+		<div class="h2">Reelgood</div>
+		<article></article>
+		<div class="btn"><a href="javascript:;" onclick="alertHide()">Confirm</a></div>
+	</div>
+</div>
+	<div class="selectpop" style="display: none;">
+		<div class="bg">
+			<div class="box" style="bottom: -100%;">
+				<ul>
+					<li>female</li>
+					<li>male</li>
+				</ul>
+				<div class="selectpopclose" onclick="selectHide()">Cancel</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="loading"><img src="/static_en/img/loading.gif" alt=""><p>loading</p></div>
+
+<div class="confirmpop">
+	<div class="box">
+		<div class="h2">Reelgood</div>
+		<article></article>
+		<div class="btn"><a href="javascript:;" class="confirmHide" onclick="confirmHide()">Cancel</a><a href="javascript:;" class="confirmsubmit">Confirm</a></div>
+	</div>
+</div>
+	<script type="text/javascript" src="/static_en/js/login.js?v=0.0.1"></script>
+
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>vip level</title>
+	<link rel="stylesheet" href="/static_en/css/css.css">
+</head>
+<body class="bodybg">
+	<div class="headerfix"><div class="back"><a href="javascript:;"><img src="/static_en/img/Icon-04.png" alt=""></a></div><h2>Vip Level</h2></div>
+	
+	<div class="viplevel">
+		<ul>
+		{foreach name="$level_list" item="vo" key="k" }  
+		<?php if($vo['level']<4){ ?>
+		{switch name="k" }
+				{case value="0"}
+				 <li>
+				<div class="img"><img src="/static_en/img/BG-06.png" alt=""></div>
+				<div class="info">
+					<h2>VIP 1  <?php if($info['level']==0){ ?>
+            <div class="active">Current</div>
+       <?php } ?></h2>
+					<h3>USDT {$vo.num}</h3>
+					<article>
+						<p>Per Deal Profit {$vo.bili}%</p>
+						<p>{$vo.order_num} Tasks Completed/day</p>
+					</article>
+				</div>
+				</li>
+				 {/case}
+				 {case value="1"}
+				 <li>
+				<div class="img"><img src="/static_en/img/BG-05.png" alt=""></div>
+				<div class="info">
+					<h2>VIP 2 <?php if($info['level']==1){ ?>
+            <div class="active">Current</div>
+       <?php } ?></h2>
+					<h3>USDT {$vo.num}</h3>
+					<article>
+						<p>Per Deal Profit {$vo.bili}%</p>
+						<p>{$vo.order_num} Tasks Completed/day</p>
+					</article>
+				</div>
+				</li>
+				 
+				 {/case}
+				 {case value="2"}
+				 <li>
+				<div class="img"><img src="/static_en/img/BG-04.png" alt=""></div>
+				<div class="info">
+					<h2>VIP 3 <?php if($info['level']==2){ ?>
+            <div class="active">Current</div>
+       <?php } ?></h2>
+					<h3>USDT {$vo.num}</h3>
+					<article>
+						<p>Per Deal Profit {$vo.bili}%</p>
+						<p>{$vo.order_num} Tasks Completed/day</p>
+					</article>
+				</div>
+			<!--div class="update">Upgrade Now</div-->
+				</li>
+				 {/case}
+				 {case value="3"}
+				 <li>
+				<div class="img"><img src="/static_en/img/BG-03.png" alt=""></div>
+				<div class="info">
+					<h2>VIP 4 <?php if($info['level']==3){ ?>
+            <div class="active">Current</div>
+       <?php } ?></h2>
+					<h3>USDT {$vo.num}</h3>
+					<article>
+						<p>Per Deal Profit {$vo.bili}%</p>
+						<p>{$vo.order_num} Tasks Completed/day</p>
+					</article>
+				</div>
+				<!--div class="update">Upgrade Now</div-->
+				</li>
+				 {/case}
+				  {default /}
+				  {/switch}
+				  <?php }?>
+					{/foreach}
+			
+			
+			
+		</ul>
+	</div>
+	
+	<script type="text/javascript" src="/static_en/js/jquery.js"></script>
+	<script type="text/javascript" src="/static_en/js/public.js"></script>
+	<script type="text/javascript">
+	/*	$('.viplevel .update').click(function(){
+			confirmShow('The accumulated first Deposit of USDT 3000.00 can be upgraded to Gold！');
+		});
+		
+		$('.confirmsubmit').click(function(){
+			confirmHide();
+			loadingShow();
+			setTimeout(function(){
+				loadingHide();
+				alertShow('Upgrade fails, you can upgrade only after all tasks at the current level are completed!');
+			},2000);
+		});*/
+	</script>
+</body>
+</html>

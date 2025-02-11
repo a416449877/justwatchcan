@@ -1,0 +1,321 @@
+.bar-button {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.bar .icon.all-icon {
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.trade-tabs-wrapper {
+  font-size: 16px;
+  background-color: #f3f5f6;
+}
+
+.trade-tabs-wrapper .buttons-tab {
+  width: 100%;
+  position: fixed;
+  top: 350px;
+  left: 0;
+}
+
+.tab-block {
+  width: 100%;
+  height: 49px;
+}
+
+.content-block.trade-content {
+  margin: 5px 0;
+  padding: 0;
+}
+
+.trade-tabs-wrapper .buttons-tab .button.active {
+  color: #F09A4C;
+  border-color: #F09A4C;
+}
+
+.time-select-wrapper {
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 48px;
+  left: 0;
+  z-index: 9;
+  background-color: #fff;
+  border-top: .5px solid #ddd;
+  border-bottom: .5px solid #ddd;
+}
+
+.time-select-wrapper-block {
+  width: 100%;
+  height: 293px;
+}
+
+.time-box {
+  width: 106px;
+  height: 34px;
+  background: #EAEAEA;
+  border: .5px solid #C7C7C7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 4px;
+}
+
+.time-box>input {
+  width: 80%;
+  height: 100%;
+  border: none;
+  font-size: 14px;
+  text-align: center;
+  background-color: #EAEAEA;
+}
+
+.query-btn {
+  width: 20%;
+  text-align: center;
+  border: 1px solid #F09A4C;
+  padding: 5px 4px;
+  box-sizing: border-box;
+  color: #fff;
+  border-radius: 4px;
+  color: #F09A4C;
+}
+
+.down-arrow {
+  color: #999;
+  font-size: 12px;
+  margin-right: 2px;
+}
+
+i.icon.icon-prev {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxnIGlkPSJzdmdfMSI+CiAgIDxwYXRoIGlkPSJzdmdfMiIgZD0ibTE1LDBsLTE1LDcuNmwxNSw3LjRsMCwtMTVsMCwweiIgZmlsbD0iI2ZmNjEyNCIvPgogIDwvZz4KIDwvZz4KPC9zdmc+');
+}
+
+i.icon.icon-next {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8Zz4KICA8dGl0bGU+YmFja2dyb3VuZDwvdGl0bGU+CiAgPHJlY3QgeD0iLTEiIHk9Ii0xIiB3aWR0aD0iMTciIGhlaWdodD0iMTciIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgZmlsbD0ibm9uZSIvPgogPC9nPgoKIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8ZyB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDcuNTAwMDAwMDAwMDAwMDAxLDcuNDk5OTk5OTk5OTk5OTk5KSAiIGlkPSJzdmdfMSI+CiAgIDxwYXRoIGZpbGw9IiNmZjYxMjQiIGQ9Im0xNSwwbC0xNSw3LjZsMTUsNy40bDAsLTE1bDAsMHoiIGlkPSJzdmdfMiIvPgogIDwvZz4KIDwvZz4KPC9zdmc+');
+}
+
+.picker-calendar-day.picker-calendar-day-selected span {
+  background-color: #F09A4C;
+}
+
+.record {
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  position: relative;
+  border: none;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between; */
+}
+
+.record:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: rgb(225, 227, 228);
+  width: 100%;
+  height: 1px;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.record .desc {
+  text-shadow: 0 0 0 #333;
+  font-weight: 500;
+}
+
+.record .time {
+  color: #999;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.record>.right {
+  font-size: 28px;
+  color: #F09A4C;
+}
+
+.to {
+  margin: 0 -34px;
+}
+
+.no-data {
+  width: 100%;
+  padding-top: 50px;
+  color: #999;
+  text-align: center;
+}
+
+.no-data img {
+  display: block;
+  margin: 0 auto 8px;
+  width: 12%;
+}
+
+.date-time {
+  color: #777777;
+  margin-bottom: 8px;
+}
+
+.record-detail__item {
+  font-family: HelveticaNeue-Medium;
+  color: #303030;
+  width: 50%;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.record-detail__item:last-child {
+  /* margin-left: 16px; */
+  text-align: right;
+}
+
+.span-cell {
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.red {
+  background-color: rgba(252, 54, 74, .18);
+  color: #FC364A;
+}
+
+.green {
+  background-color: rgba(39, 199, 126, .18);
+  color: #27C77E;
+}
+
+.span-results {
+  font-family: HelveticaNeue-Medium;
+  color: #FC364A;
+}
+
+.record-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.report-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border-top: .5px solid #ccc; */
+  position: fixed;
+  left: 0;
+  top: 100px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.rewpr-item {
+  width: 50%;
+  background-color: #fff;
+  border-bottom: .5px solid #ddd;
+  border-right: .5px solid #ddd;
+  text-align: center;
+  height: 50px;
+}
+
+.rewpr-item:nth-child(even) {
+  border-right: none;
+}
+
+.rewpr-item .title {
+  margin-top: 4px;
+  margin-bottom: 2px;
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  color: #777777;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.rewpr-item .value {
+  font-family: HelveticaNeue-Medium;
+  font-size: 14px;
+  color: #303030;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.rewpr-item .value.red {
+  color: #FC364A;
+  background-color: #fff;
+}
+
+.rewpr-item .value.green {
+  color: #27C77E;
+  background-color: #fff;
+}
+
+.sahdj__wrap {
+  width: 94%;
+  margin: 20px auto;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+}
+
+.sahdj__wrap>img {
+  min-width: 2rem;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 20px;
+}
+
+.right-sawa {
+  flex: 1;
+}
+
+.right-sawa .name {
+  font-family: HelveticaNeue-Medium;
+  color: #303030;
+  letter-spacing: 0;
+  margin-bottom: 2px;
+  font-size: 12px;
+}
+
+.right-sawa .djkaw {
+  font-family: HelveticaNeue;
+  color: #303030;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+.right-sawa .djkaw>div:first-child {
+  margin-right: 20px;
+}
+.right-sawa p {
+  font-family: HelveticaNeue;
+font-size: 12px;
+color: #777777;
+letter-spacing: 0;
+margin-top: 0;
+margin-bottom: 2px;
+}
+.trps-bgc{
+  background-color: #F3F5F6;
+}

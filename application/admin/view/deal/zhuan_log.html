@@ -1,0 +1,42 @@
+{extend name='admin@main'}
+{block name="content"}
+<div class="think-box-shadow">
+    <table class="layui-table margin-top-15" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='text-left nowrap'>用户名称</th>
+            <th class='text-left nowrap'>奖品</th>
+            <th class='text-left nowrap'>领取时间</th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='text-left nowrap'>{$vo.tel}</td>
+            <td class='text-left nowrap'>{$vo.jp}</td>
+            <td class='text-left nowrap'>{$vo.create_time|format_datetime}</td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+<script>
+    function save(){
+        var num = $("#num").val();
+        $.ajax({
+            type: 'POST',
+            url: "{:url('edit')}",
+            data: {
+                'num': num
+            },
+            success:function (res) {
+                layer.msg(res.info,{time:2500});
+                location.reload();
+            }
+        });
+    }
+</script>
+{/block}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{$Think.lang.lxb_title}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/alllang/static/css/light7.css">
+    <link rel="stylesheet" href="/alllang/static/css/light7-swiper.css">
+    <link rel="stylesheet" href="/alllang/static/css/iconfont.css">
+    <link rel="stylesheet" href="/alllang/static/css/common.css">
+    <link rel="stylesheet" href="/alllang/static/css/deposit.css">
+    <link rel="stylesheet" href="/alllang/static/css/account.css"></head>
+    <link href="/alllang/static/css/base.css" rel="stylesheet">
+    <link href="/alllang/static/css/funding.css" rel="stylesheet">
+    <script src="/static/plugs/jquery/jquery.min.js"></script>
+    <script src="/public/js/common.js"></script>
+    <script charset="utf-8" src="/static_new/js/jquery.i18n.properties-1.0.9.js"></script>
+   <body style="background:black">
+
+    <div class="header page bgc-f3" id="unlock"  style="background-image:url(/bj.jpg); background-size: 100% 100%;background-repeat: no-repeat;">
+      <header class="bar bar-nav ">
+        <a href="/index/index/home.html" class="icon icon-left pull-left"></a>
+        <div class="title" style="padding-bottom:1px;width:100%;/* height:1.8rem; */color:#fff;background: linear-gradient(90deg,#2e2e30,#2e2e30);background: -webkit-linear-gradient(left,#2e2e30,#2e2e30);">{$Think.lang.lxb_title}</div>
+       
+        </header>
+ 
+    
+      <div class="content scroll-wrapper" >
+        
+        <div class="vpay-account"  style='width:100%;background-size:100% 90%'>
+        <div class="vpay-account-balance" style=" width: 50%;">
+          <span style="color: #b5a483;" data-lang="string_wallet_balance">{$Think.lang.lxb_yeb} </span>
+          <h1 style="color: #fff;margin-top:-0.2rem">{$balance|format='%.2f'}<em style="font-size:0.8rem">Rs</em></h1></div>
+        <div class="vpay-account-details" style=" padding-bottom: 1.5rem;margin-top:-0.5rem">
+          <ul>
+            <li>
+              <a href="">
+                <span style="color: #b5a483;" data-lang="string_wallet_withdraw_balanc">{$Think.lang.lxb_zsy}</span>
+                <h3 style="color: #fff;">+{$balance_shouru}</h3></a>
+            </li>
+            <li>
+              <a href="">
+                <span style="color: #b5a483;" data-lang="string_lixibao_total_revenue">Estimated income</span>
+                <h3 style="color: #fff;">{$yuji_num}</h3></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="big-box" style='margin-top:-1rem'>
+          <!--<div class="level-box">-->
+            <!--<div class="level-box--item">-->
+            <!--  <div class="dajkeh">{$Think.lang.lxb_zzc} (Rs)</div>-->
+            <!--  <div class="ddoekjh">{$ubalance}</div></div>-->
+          <!--  <div class="level-box--item">-->
+          <!--    <div class="dajkeh">{$Think.lang.lxb_yeb} </br>(Rs)</div>-->
+          <!--    <div class="ddoekjh">+{$balance}</div></div>-->
+          <!--  <div class="level-box--item">-->
+          <!--    <div class="dajkeh">{$Think.lang.lxb_zsy}</div>-->
+          <!--    <div class="ddoekjh">+{$balance_shouru}</div></div>-->
+          <!--  <div class="level-box--item">-->
+          <!--    <div class="dajkeh">Estimated income</div>-->
+          <!--    <div class="ddoekjh">{$yuji_num}</div></div>-->
+          <!--</div>-->
+          <style>
+          
+              .class1{
+                  display: none;
+                  position: absolute;
+                  left: 5%;
+                  top: 170px;
+                 height:320px;
+                 width:90%;
+                 border-radius:10px;
+                 background-color:white;
+                 z-index: 99999;
+              }
+              .class2{
+                  float: content;
+                  top:50px;
+                  margin-left:100px;
+                  margin-top: 10px;
+              }
+            
+              .wdal-box{
+                  border: 0px;
+              }
+          </style>
+          <div class='class1'>
+              <span style='font-size:18px;float:right;color:#777777;z-index:999000;margin-right:10px' onclick='func2()'>&#10006;</span>
+              
+                <div class="class2"> <span style='font-size:18px; color:#fff;' >Confirm Deposit</span></div>
+              <div class="wdal-box">
+                <div class="label dwa">Purchasable balance:</div>
+                <div class="value"  >  {$ubalance}</div>
+              </div>
+              <div class="wdal-box">
+                <div class="label dwa">{$Think.lang.lxb_zrje}:</div>
+                <div class="value" style="width:50px">
+                  <input type="number"  style="border:0.5px solid #b5a483;margin-right:10px;" name="price" id="price" placeholder="{$Think.lang.lxb_qsrzrje}">
+                </div>
+              </div>
+              <div class="wdal-box">
+                <div class="label dwa">{$Think.lang.lxb_yjsy}:</div>
+                <div class="value" id="revenue"  >0.00</div>
+                  <!-- <input type="password" name="" placeholder="Input fund password"> -->
+              </div>
+              <div class="wdal-box">
+                  <div class="label dwa">Contract Time:</div>
+                <div class="label dwa" id='times'>{$Think.lang.lxb_yjsy}</div>
+                
+              </div>
+              <input type="button" class="choice-btn" id="depositSub" value="{$Think.lang.lxb_zr}" style="width:200px;backdrop-filter:none;background-image: linear-gradient(#D4E4FF,#D4E4FF);">
+          </div>
+            <script>
+                function func2(){
+                    $('.class1').css('display','none');
+                }
+            </script>
+          <div class="product__wrap" >
+            {if $lixibao}
+            {volist name='lixibao' id='v'}
+            <div class="sjakeh" data-id="{$v.id}" onclick="yjsy1({$v.id},{$v.day})"  style="background-image:url({$v.bj}); background-size: 100% 100%;background-repeat: no-repeat;">
+              <div class="sjakeh-title-1">{$v.name}</div>
+              <div class="sjakeh-title-1">+{$v.bili*100}&nbsp;%</div>
+              <div class="sjakeh-title-1" style="font-size:12px">Surplus&nbsp;{$v.yv}&nbsp;piece</div>
+              <div class="djakew">
+              
+                <div style='color:white'>[{$Think.lang.lxb_ding}]&nbsp;{$v.day}&nbsp;{$Think.lang.lxb_day}</div></div>
+            </div>
+            {/volist}
+            {else\}
+
+            {/if}
+  
+          </div></br></br>
+          <div class="vpay-toolbar">
+      <a href="/index/ctrl/lixibao_chu" style="border-radius: 50px; width: 40%; margin: 5%; background-color:  #FC364A;" >Profit return</a>
+      <a href="/index/ctrl/lixibao_chu?b=1" style="border-radius: 50px; width: 40%; margin: 5%; backdrop-filter:none;background-image: linear-gradient(#D4E4FF,#D4E4FF);" >Invested in</a></div>
+          </div>
+      </div>
+      {include file="public/floor" /}
+    </div>
+    <div id="modal-overlay" class="modal-overlay"></div>
+    <div id="modal" class="modal">
+      <div class="modal-inner">
+        <div class="dasd-title">{$Think.lang.lxb_qrzr}</div>
+        <div class="btn-box">
+          <div class="cancel-btn">{$Think.lang.quxiao}</div>
+          <div class="confirm-btn">{$Think.lang.queding}</div></div>
+      </div>
+    </div>
+   
+    <script type='text/javascript' src='/alllang/static/js/jquery.min.js'></script>
+    <script type='text/javascript' src='/alllang/static/js/light7.js'></script>
+    <script type='text/javascript' src='/alllang/static/js/light7-swiper.js'></script>
+    <script type='text/javascript' src='/alllang/static/js/utils.js'></script>
+    <script type='text/javascript' src='/alllang/static/js/layer.js'></script>
+    <script>    
+    
+        var lcid=1;
+        function check() {
+            if ($("input[name=price]").val() == '') {
+                $.toast('{$Think.lang.lxb_qsrzrje}');
+                return false;
+            }
+            return true;
+        }
+    
+        $(function () { 
+            // $('.product__wrap>div').eq(0).trigger("click");
+        });
+    
+        $('.product__wrap>div').click(function () {
+            $('.product__wrap>div').removeClass('current');
+            $(this).addClass('current')
+        });
+    
+        $("#price").keyup(function () {
+            yjsy();
+        })
+    
+        function yjsy1(id,day) {
+            $('.class1').css('display','inline');
+            	
+			 var timestamp = parseInt(new Date().getTime() / 1000);
+            var danqian=getTimes(timestamp);
+            
+            if(id==1){
+                timestamp=timestamp+86400*day;
+            }else if(id==2){
+                timestamp=timestamp+86400*day;
+            }
+            else if(id==3){
+                timestamp=timestamp+86400*day;
+            }
+            else if(id==4){
+                timestamp=timestamp+86400*day;
+            }
+            else if(id==5){
+                timestamp=timestamp+86400*day;
+            }
+            else if(id==6){
+                timestamp=timestamp+86400*day;
+            }
+            else if(id==7){
+                timestamp=timestamp+86400*day;
+            }
+            else if(id==8){
+                timestamp=timestamp+86400*day;
+            }
+            var time=getTimes(timestamp);
+            $('#times').text(danqian+" ---- "+time);
+            lcid=id;
+            window.yjsy();
+        }
+        function getTimes(nS) {
+            var date=new Date(parseInt(nS)* 1000);
+            var year=date.getFullYear();
+            var mon = date.getMonth()+1;
+            var day = date.getDate();
+           
+    
+            return year+'/'+mon+'/'+day;
+        }
+        function yjsy() {
+            var price = $("#price").val();
+            if(price<=0) return false;
+            $.ajax({
+                url: '/index/ctrl/deposityj',
+                data: {price: price, lcid: lcid},
+                type: 'POST',
+                success: function (data) {
+                    $("#revenue").html(data.data);
+                }
+            });
+        }
+    
+        $('#depositSub').on('click', function () {
+            $('#modal-overlay').addClass('modal-overlay-visible');
+            $('#modal').show();
+            setTimeout(function(){
+                $('#modal').removeClass('modal-out').addClass('modal-in');
+            }, 50)
+        });
+        $('#modal-overlay').click(function() {
+            return false;
+        });
+        $('.cancel-btn').click(function(){
+            $('#modal-overlay').removeClass('modal-overlay-visible');
+            $('#modal').removeClass('modal-in').addClass('modal-out');
+            setTimeout(function(){
+                $('#modal').hide();
+            }, 200)
+        })
+        $('.confirm-btn').click(function(){
+            $('#modal-overlay').removeClass('modal-overlay-visible');
+            $('#modal').removeClass('modal-in').addClass('modal-out');
+    
+            if (check()) {
+                var price = $("input[name=price]").val();
+                $.ajax({
+                    url: "/index/ctrl/lixibao_ru.html",
+                    data: {price:price,lcid:lcid},
+                    type: 'POST',
+                    success: function (data) {
+                        if (data.code == 0) {
+                            $.toast(data.info);
+                            setTimeout(function () {
+                                window.location.href = '/index/ctrl/lixibao';
+                            }, 2000);
+                        } else if(data.code == 4){
+                            $('#modal').hide();
+                            $.toast(data.info);
+                        }else {
+                            $('#modal').hide();
+                            $.toast(data.info);
+                        }
+                    }
+                });
+            }else {
+                $('#modal').hide();
+            }
+        })
+    
+    </script>
+  </body>
+
+</html>

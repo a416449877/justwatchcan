@@ -1,0 +1,188 @@
+
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body">
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">用户名称</label>
+            <div class="layui-input-block">
+                <input name="user_name" required placeholder="请输入用户名称" value="{$info.username}" class="layui-input" readonly="readonly">
+                <input type="hidden" name="_csrf_" value="{:systoken('admin/users/edit_users')}">
+
+            </div>
+        </div>
+         <div class="layui-form-item">
+            <label class="layui-form-label label-required">今日第几单卡</label>
+            <div class="layui-input-block">
+                <input name="ka_sum" required placeholder="请输入今日第几单卡" value="{$info.ka_sum}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">卡单商品1</label>
+            <div class="layui-input-block">
+                <input name="ka_good" ts-selected="{$info.ka_good}" id="EQUIPMENTNAME" required placeholder="请选择卡单商品1" value="{$info.ka_good}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">卡单商品2</label>
+            <div class="layui-input-block">
+                <input name="lian_good" ts-selected="{$info.lian_good}" id="lian_goodselect" required placeholder="请选择卡单商品2" value="{$info.lian_good}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">卡单商品3</label>
+            <div class="layui-input-block">
+                <input name="lian_good3" ts-selected="{$info.lian_good}" id="lian_goodselect3" required placeholder="请选择卡单商品3" value="{$info.lian_good3}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label label-required">卡单商品4</label>
+            <div class="layui-input-block">
+                <input name="lian_good4" ts-selected="{$info.lian_good}" id="lian_goodselect4" required placeholder="请选择卡单商品4" value="{$info.lian_good4}" class="layui-input">
+            </div>
+        </div>
+         <div class="layui-form-item">
+            <label class="layui-form-label label-required">卡单佣金倍数</label>
+            <div class="layui-input-block">
+                <input name="lian_yongjin" ts-selected="{$info.lian_yongjin}" id="lian_yongjin" required placeholder="请选择卡单商品4" value="{$info.lian_yongjin}" class="layui-input">
+            </div>
+        </div>
+
+
+ 
+
+    </div>
+    <input name="id" type="hidden" value="{$info.id}">
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit'>提交</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-close>取消</button>
+    </div>
+
+    <script>
+    layui.config({
+    base: '/static/plugs/layui/ext/',// 第三方模块所在目录
+    version: '' // 插件版本号
+    }).extend({
+        tableSelect:'tableSelect',  // 插件
+    });
+
+        layui.use([ 'tableSelect'], function () {
+        var form = layui.form,
+            $ = layui.$,
+            tableSelect = layui.tableSelect;
+          tableSelect.render({
+           elem: '#EQUIPMENTNAME',//定义输入框input对象 必填
+           checkedKey: 'id',//表格的唯一建值，非常重要，影响到选中状态 必填
+           searchKey: 'title',	//搜索输入框的name值 默认keyword
+           searchPlaceholder: '输入最低价',//搜索输入框的提示文字 默认关键词搜索  
+          
+           table: {
+               url: '/admin/deal/goods_list2',
+               cols: [[
+                   {type:'radio',width:150},
+                   { field: 'id', title: 'ID',width:200},
+                   { field: 'goods_name', title: '名称'},
+                   { field: 'goods_price', title: '价格'},
+                   //{ fixed: '', title: '操作', toolbar: '#equipment-table-tool', width: 80 }
+               ]],
+                limit: 40, //每页默认显示的数量
+           },
+           done: function (elem, data) {
+                //选择完后的回调，包含2个返回值 elem:返回之前input对象；data:表格返回的选中的数据 []
+                //拿到data[]后 就按照业务需求做想做的事情啦~比如加个隐藏域放ID...
+               $('#EQUIPMENTNAME').val(data.data[0].id);
+           }
+       })
+        })
+        layui.use([ 'tableSelect'], function () {
+        var form = layui.form,
+            $ = layui.$,
+            tableSelect = layui.tableSelect;
+          tableSelect.render({
+           elem: '#lian_goodselect',//定义输入框input对象 必填
+           checkedKey: 'id',//表格的唯一建值，非常重要，影响到选中状态 必填
+           searchKey: 'title',	//搜索输入框的name值 默认keyword
+           searchPlaceholder: '输入最低价',//搜索输入框的提示文字 默认关键词搜索  
+          
+           table: {
+               url: '/admin/deal/goods_list2',
+               cols: [[
+                   {type:'radio',width:150},
+                   { field: 'id', title: 'ID',width:200},
+                   { field: 'goods_name', title: '名称'},
+                   { field: 'goods_price', title: '价格'},
+                   //{ fixed: '', title: '操作', toolbar: '#equipment-table-tool', width: 80 }
+               ]],
+                limit: 40, //每页默认显示的数量
+           },
+           done: function (elem, data) {
+                //选择完后的回调，包含2个返回值 elem:返回之前input对象；data:表格返回的选中的数据 []
+                //拿到data[]后 就按照业务需求做想做的事情啦~比如加个隐藏域放ID...
+               $('#lian_goodselect').val(data.data[0].id);
+           }
+       })
+        })
+        layui.use([ 'tableSelect'], function () {
+        var form = layui.form,
+            $ = layui.$,
+            tableSelect = layui.tableSelect;
+          tableSelect.render({
+           elem: '#lian_goodselect3',//定义输入框input对象 必填
+           checkedKey: 'id',//表格的唯一建值，非常重要，影响到选中状态 必填
+           searchKey: 'title',	//搜索输入框的name值 默认keyword
+           searchPlaceholder: '输入最低价',//搜索输入框的提示文字 默认关键词搜索  
+          
+           table: {
+               url: '/admin/deal/goods_list2',
+               cols: [[
+                   {type:'radio',width:150},
+                   { field: 'id', title: 'ID',width:200},
+                   { field: 'goods_name', title: '名称'},
+                   { field: 'goods_price', title: '价格'},
+                   //{ fixed: '', title: '操作', toolbar: '#equipment-table-tool', width: 80 }
+               ]],
+                limit: 40, //每页默认显示的数量
+           },
+           done: function (elem, data) {
+                //选择完后的回调，包含2个返回值 elem:返回之前input对象；data:表格返回的选中的数据 []
+                //拿到data[]后 就按照业务需求做想做的事情啦~比如加个隐藏域放ID...
+               $('#lian_goodselect3').val(data.data[0].id);
+           }
+       })
+        })
+        layui.use([ 'tableSelect'], function () {
+        var form = layui.form,
+            $ = layui.$,
+            tableSelect = layui.tableSelect;
+          tableSelect.render({
+           elem: '#lian_goodselect4',//定义输入框input对象 必填
+           checkedKey: 'id',//表格的唯一建值，非常重要，影响到选中状态 必填
+           searchKey: 'title',	//搜索输入框的name值 默认keyword
+           searchPlaceholder: '输入最低价',//搜索输入框的提示文字 默认关键词搜索  
+          
+           table: {
+               url: '/admin/deal/goods_list2',
+               cols: [[
+                   {type:'radio',width:150},
+                   { field: 'id', title: 'ID',width:200},
+                   { field: 'goods_name', title: '名称'},
+                   { field: 'goods_price', title: '价格'},
+                   //{ fixed: '', title: '操作', toolbar: '#equipment-table-tool', width: 80 }
+               ]],
+                limit: 40, //每页默认显示的数量
+           },
+           done: function (elem, data) {
+                //选择完后的回调，包含2个返回值 elem:返回之前input对象；data:表格返回的选中的数据 []
+                //拿到data[]后 就按照业务需求做想做的事情啦~比如加个隐藏域放ID...
+               $('#lian_goodselect4').val(data.data[0].id);
+           }
+       })
+        })
+        
+        
+           
+    </script>
+    <script>window.form.render();</script>
+
+</form>

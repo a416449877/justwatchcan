@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Notifications</title>
+	<link rel="stylesheet" href="/static_en/css/css.css">
+</head>
+<body class="bodybg">
+	<div class="headerfix"><div class="back"><a href="javascript:;"><img src="/static_en/img/Icon-04.png" alt=""></a></div><h2>Notifications</h2></div>
+	
+	<div class="notifications">
+		<ul>
+		{volist name='info' id='v'}
+		<li>
+				<p>{$v.content|raw}</p>
+				<time><?php echo (date("Y-m-d H:i:s",$v['addtime'])); ?></time>
+			</li>
+		{/volist}
+		</ul>
+	</div>
+	
+	<script type="text/javascript" src="/static_en/js/jquery.js"></script>
+	<script type="text/javascript" src="/static_en/js/public.js"></script>
+</body>
+</html>

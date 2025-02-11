@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+        <title>{$Think.lang.lang}</title>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css"
+        />
+    </head>
+    <body style="color:black !important">
+        <div id="app">
+            <van-nav-bar
+              title="{$Think.lang.lang}"
+              left-text="{$Think.lang.back}"
+              left-arrow
+              @click-left="onClickLeft"
+             style="backdrop-filter:none;background-image: linear-gradient(#FFFFFF, #D4E4FF);">
+            </van-nav-bar>
+            <van-cell-group>
+              <van-cell  icon="other-pay" title="Français" url="/index/user/lang_set?lang=fri" is-link></van-cell>
+              <van-cell  icon="other-pay" title="English" url="/index/user/lang_set?lang=en" is-link></van-cell>
+              <van-cell  icon="other-pay" title="Português" url="/index/user/lang_set?lang=pt" is-link></van-cell>
+              <van-cell  icon="other-pay" title="हिंदी" url="/index/user/lang_set?lang=hi" is-link></van-cell>
+              <van-cell  icon="other-pay" title="简体中文" url="/index/user/lang_set?lang=zh-cn" is-link></van-cell>
+              <van-cell  icon="other-pay" title="Español" url="/index/user/lang_set?lang=xi-ban" is-link></van-cell>
+              <van-cell  icon="other-pay" title="عرب ." url="/index/user/lang_set?lang=alb" is-link></van-cell>
+               <van-cell  icon="other-pay" title="Tiếng Việt" url="/index/user/lang_set?lang=ja" is-link></van-cell>
+              <van-cell  icon="other-pay" title="bahasa Indonesia" url="/index/user/lang_set?lang=in" is-link></van-cell>
+            </van-cell-group>
+        </div>
+  
+        
+        <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script>
+        <script type="text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    site: "菜鸟教程",
+                    url: "www.runoob.com",
+                    alexa: "10000"
+                },
+                methods: {
+                    details: function() {
+                        return  this.site + " - 学的不仅是技术，更是梦想！";
+                    },
+                    onClickLeft() {
+                        window.history.go(-1);
+                    },
+                }
+            })
+        </script>
+    </body>
+</html>

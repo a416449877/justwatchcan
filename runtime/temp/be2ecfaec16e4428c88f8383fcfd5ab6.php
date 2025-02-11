@@ -1,0 +1,236 @@
+<?php /*a:1:{s:74:"/www/wwwroot/movieboostvip.com/application/index/view/rot_order/index.html";i:1738342358;}*/ ?>
+
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Book tickets</title><link rel="stylesheet" href="/static_en/css/css.css?v"></head><body class="bodybg1"><!-- <div class="header"><div class="logo"><a href="/"><img src="/static_en/img/Letterboxd-Logo-03.png" alt=""></a></div><div class="user" style="display:flex"><a href="/index/my/index.html"><img src="/static_en/img/BG-021.png" alt=""><span>Profile</span></a><div id="change_lanauge" style="margin-left:16px"><img src="/static/images/en.png" style="width:30px;"></div></div></div> --><br><div class="footer3" ><strong>Movieboost </strong></div><div class="imageList1"><ul><img src="/static_en/img/taskc.gif" height=90%; width=100%; /></ul></div><section class="section starting"><div class="view_one"><div class="t"><h2>Book tickets</h2><p><!-- 13111111111 --><?php if($info['level']==0){ ?><img src="/1.png" alt=""><?php } if($info['level']==1){ ?><img src="/2.png" alt=""><?php } if($info['level']==2){ ?><img src="/3.png" alt=""><?php } if($info['level']==3){ ?><img src="/4.png" alt=""><?php } ?></p></div><div class="b"><ul><li><div class="l"><img src="/static_en/img/BG-08.png" alt=""></div><div class="m"><p>Today’s profits</p><h2>Rupiah <?php echo sprintf("%.2f",$jintianshouyi); ?></h2></div><div class="r">Daily profits will be credited automatically</div></li><li><div class="l"><img src="/static_en/img/BG-022.png" alt=""></div><div class="m"><p>Total Balance</p><h2>Rupiah <?php echo sprintf("%.2f",$zongshouyi1); ?></h2></div><div class="r">Profits from each order will be credited to total balance</div></li></ul></div></div><?php if($info['balance']<0){ ?><div style="color: red; font-size: 16px; text-align: center; background: linear-gradient(90deg,#5b5b64,#5b5b64); padding: 10px;">
+    Combined assignment (<?php echo htmlentities($info['balance']); ?>)
+</div><?php } ?><div class="view_three"><div class="t"><p>Completed  (<?php echo htmlentities($info['deal_count']); ?>/<?php echo htmlentities($dengjidingdan); ?>) </p><a href="javascript:;">Start Now</a></div><!-- <div class="b"><ul><li><div class="r mr-20"><div class="blue">Rupiah 3739.40</div><div class="white"><b>SONY Mirrorless</b></div></div><div class="l"><img src="/static_en/img/SONY Mirrorless.jpg" alt=""></div></li><li><div class="l mr-20"><img src="/static_en/img/Submariner.jpg" alt=""></div><div class="r"><div class="white"><b>Submariner</b></div><div class="blue">Rupiah 9495.52</div></div></li><li><div class="r mr-20"><div class="blue">Rupiah 5384.63</div><div class="white"><b>Hikvision Camera</b></div></div><div class="l"><img src="/static_en/img/Hikvision Camera.jpg" alt=""></div></li><li><div class="l mr-20"><img src="/static_en/img/MONTBLANC.jpg" alt=""></div><div class="r"><div class="white"><b>MONTBLANC</b></div><div class="blue">Rupiah 1499.00</div></div></li><li><div class="r mr-20"><div class="blue">Rupiah 909.99</div><div class="white"><b>Samsung Galaxy</b></div></div><div class="l"><img src="/static_en/img/Samsung Galaxy.jpg" alt=""></div></li><li><div class="l mr-20"><img src="/static_en/img/BALENCIAGAPink.jpg" alt=""></div><div class="r"><div class="white"><b>BALENCIAGAPink</b></div><div class="blue">Rupiah 1216.99</div></div></li></ul></div> --><div class="footer2" >
+    Rules:<br/><br/>
+1. In order to prevent malicious users or a series of illegal activities, one mobile phone number can only register one account.<br/>2. When you click "Start Now," the system will automatically assign the order to you based on your total balance.<br/>3. Please do not share your login password or withdrawal password with anyone to avoid the risk of losing your funds.<br/><!--<br/>
+● Each account is required to complete all tickets on a daily basis.
+<br/><br/>
+All tickets are randomly assigned by the system, so it is not possible to change, cancel or skip tickets once received.
+<br/><br/>
+● Each order is supplied by a different merchant, so naturally the profit varies. Therefore, you will need to ask customer service for the merchant's address before each deposit is made.
+<br/><br/>
+If you do not deposit after one hour, you will need to reconfirm the single merchant address with Customer Service. This is to prevent unnecessary problems with ongoing transactions.
+<br/><br/>
+● The platform will not be held responsible if you transfer funds to an incorrect or out of time account.
+<br/><br/>
+Note: Please do not register your account on the platform with the same person's mobile account to avoid data errors.
+<br/><br/>
+- For more information please contact
+our customer service
+Once the receiving address is bound, it cannot be changed again, unless there is some problem with the receiving address to receive withdrawals.</div> --><div class="tip"><h2>Notes:</h2><p> - Working hours: 10:00AM - 23:59РM</p><p>- For more information please contact
+our customer service</p></div></div></section><div class="footerfix"><ul><li><a href="/index/index/home.html"><img src="/static_en/img/BG-019.png" alt=""><p>Home</p></a></li><li><a href="/index/index/event"><img src="/static_en/img/BG-010.png" alt=""><p>Event</p></a></li><li class="starting"><a href="/index/rot_order/index"><div class="img"><img src="/static_en/img/BG-02.png" alt=""></div><p >Tickets</p></a></li><li><a href="https://www.boxofficemojo.com/" target="_blank"><img src="/static_en/img/BG-09.png" alt=""><p>Box office</p></a></li><li><a href="/index/my/index.html"><img src="/static_en/img/BG-021.png" alt=""><p>Profile</p></a></li></ul></div><div class="fixinfo"><div class="title"><h2>Rating Submission</h2><a href="javascript:;" class="close"><img src="/static_en/img/upfixclose.png" alt=""></a></div><div class="thumb"><img id="oimg" src="" alt=""><p id="otitle"></p></div><div class="uinfo"><form onsubmit="return checkstarting()"><ul class="u1"><li><p>Total amount</p><h2>Rupiah <span id="ototal"></span></h2></li><li><p>Profit</p><h2>Rupiah <span id="yongjin"></span></h2></li></ul><!-- <ul class="u2"><li><p>Creation time</p><p id="otime"></p></li><li><p>Rating No.</p><p id="oid"></p></li></ul> --><button >Rate now</button></form></div></div><script type="text/javascript" src="/static_en/js/jquery.js"></script><script type="text/javascript" src="/static_en/js/public.js?11"></script><script type="text/javascript">
+		var startflag=false;
+		 var cid = "0";
+      var oid = '';
+      var add_id = '';
+      var countdown = "1",
+      tt1 = 2478;
+		$('.view_three .t a').click(function(){
+			if(startflag){
+				alertShow('Opening hours:11:00:00 - 22:59:59');
+			}else{
+		//	loadingShow();
+			try {
+              grecaptcha.ready(function() {
+                grecaptcha.execute('6LdC99EZAAAAABfzI41Q48ZSd2Pe2aHA_vJ61go4', {
+                  action: 'submit'
+                }).then(function(token) {
+                  // Add your logic to submit to your backend server here.
+                  start(token, 0);
+                });
+              });
+            } catch(e) {
+              console.log(e);
+              start('', 0);
+            }
+				
+			}
+		});
+		
+		$('.fixinfo .close').click(function(){
+			$('.fixinfo').animate({'bottom':'-100%'});
+		});
+		
+		/***********************************请求订单****************************************/
+		function start(token, v) {
+        if (countdown <= 0) {
+          //$('#orderDetail').modal('show');
+          //------------------------------------------------------------------
+          $.ajax({
+            url: "/index/rot_order/submit_order.html" + '?cid=' + cid + '&reCAPTCHA=' + token + '&v=' + v + '&m=' + Math.random(),
+            timeout: 10000,
+            type: 'POST',
+            success: function(data) {
+			
+            if (data.code == -1) { //recharge
+            loadingHide();
+				alertShow(data.info);
+                // setTimeout(function() {
+                //   location.href = "https://wa.me/+447414192195";wgveau
+                // },
+                // 2000);
+              } else if (data.code == -2) { //bank card
+                alertShow(data.info);
+                setTimeout(function() {
+                //   location.href = "/index/order/index.html";
+                },
+                2000);
+              }
+              else if (data.code == -4) { //bank card
+                alertShow(data.info);
+                setTimeout(function() {
+                  location.href = "/index/index/home.html";
+                },
+                2000);
+              }else if (data.code == 1) {
+                  loadingHide();
+				alertShow("The order rating has been completed!");
+              } else if (data.code == 0 && data.oid) {
+                  loadingHide();
+                sessionStorage.setItem('oid', data.oid);
+			//	msgShow(data.info)
+                qdSuccess(data.oid);
+                oid = data.oid;
+                add_id = data.add_id;
+              } else {
+
+                if (data.info) {
+                  alertShow(data.info);
+                } else {
+				alertShow("Sorry, your order failed. Please order!");
+                }
+              }
+            }
+          });
+        } else {
+          countdown--;
+          setTimeout(function() {
+            start(token, v)
+          },
+          1000);
+        }
+
+      }
+      /***********************************显示订单****************************************/
+	   function qdSuccess(oid) {
+     
+        $.ajax({
+          url: "/index/order/order_info",
+          type: "POST",
+          dataType: "JSON",
+          data: {
+            id: oid
+          },
+          success: function(res) {
+            var data = res.data;
+            if (res.code == 0) {
+              $('#otime').html(data.addtime) 
+              $('#oid').html(data.oid) 
+              $('#otitle').html(data.goods_name) 
+              $('#oimg').attr('src', data.goods_pic) 
+              $('#ototal').html(data.num) 
+              $('#yongjin').html(data.commission) 
+			  
+			  $('.fixinfo').animate({'bottom':'0'});
+            }
+          },
+          error: function(err) {
+            console.log(err)
+          }
+        })
+      }
+      
+      /***********************************提交订单************************************************/
+
+      var zhujiTime = 1000;
+      var shopTime = 2000;
+	function checkstarting(){
+	//	 loadingShow();
+        var i = 0;
+        var timer = setInterval(function() {
+          i++;
+          if (i == 0) {
+            msgShow("Generate product order")
+          } else if (i == 1) {
+            msgShow("Order submission completed")
+            var ajaxT = setTimeout(function() {
+              $.ajax({
+                url: "/index/order/do_order",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                  oid: oid,
+                  add_id: add_id,
+                },
+                success: function(res) {
+                    loadingHide();
+                  if (res.code == 0) {
+                    
+                    // alertShow("Order processing completed");
+                    clearInterval(timer);
+                    location.reload()
+                    //  var linkTime = setTimeout(function() {
+                    //   location.reload()
+                    // },
+                    // 1800);
+                  } else if(res.code == 5){
+                        var data=res.data;
+                        loadingHide();
+                        sessionStorage.setItem('oid', data.oid);
+        				msgShow(data.info)
+                        qdSuccess(data.oid);
+                        oid = data.oid;
+                        add_id = data.add_id;
+                  }else {
+                    
+                    alertShow("Insufficient account balance");
+                  }
+                  sumbit = true;
+                },
+                error: function(err) {
+                  sumbit = true;
+                }
+              })
+            },
+            shopTime)
+          }
+        },
+        zhujiTime)	
+        return false;
+		}
+		/*
+		var ajaxT = setTimeout(function() {
+              $.ajax({
+                url: "/index/order/do_order",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                  oid: oid,
+                  add_id: add_id,
+                },
+                success: function(res) {
+                    loadingHide();
+                  if (res.code == 0) {
+                    
+                    alertShow("Order processing completed");
+                    clearInterval(timer);
+                    var linkTime = setTimeout(function() {
+                     // location.reload()
+                    },
+                    1800);
+                  } else {
+                    
+                    alertShow("confirm");
+                  }
+                  sumbit = true;
+                },
+                error: function(err) {
+                  sumbit = true;
+                }
+              })
+            },
+            shopTime)
+		*/
+	</script></body></html>

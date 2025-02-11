@@ -1,0 +1,305 @@
+
+<fieldset>
+    <legend>条件搜索</legend>
+    <form class="layui-form layui-form-pane form-search" action="{:request()->url()}" onsubmit="return false" method="get" autocomplete="off">
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">用户名称</label>
+            <div class="layui-input-inline">
+                <input name="username" value="{$Think.get.username|default=''}" placeholder="请输入用户名称" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">手机号码</label>
+            <div class="layui-input-inline">
+                <input name="tel" value="{$Think.get.tel|default=''}" placeholder="请输入手机号码" class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">业务员</label>
+            <div class="layui-input-inline">
+                <input name="admin_id" value="{$Think.get.admin_id|default=''}" placeholder="请输入业务员" class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">注册时间</label>
+            <div class="layui-input-inline">
+                <input data-date-range name="addtime" value="{$Think.get.addtime|default=''}" placeholder="请选择注册时间" class="layui-input">
+            </div>
+        </div>
+        
+
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-inline">
+                <select name="is_jia" id="selectList">
+                    <option value="">所有状态</option>
+                    <option value="-1">真人</option>
+                    <option value="1">假人</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">VIP等级</label>
+            <div class="layui-input-inline">
+                <select name="vip_state" id="vip_state">
+                    <option value="">所有状态</option>
+                    <option value="1">vip1</option>
+                    <option value="2">vip2</option>
+                    <option value="3">vip3</option>
+                    <option value="4">vip4</option>
+                    <option value="5">vip5</option>
+                    <option value="6">vip6</option>
+                    <option value="7">vip7</option>
+                    <option value="8">vip8</option>
+                    <option value="9">vip9</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">用户层级</label>
+            <div class="layui-input-inline">
+                <select name="level_state" id="level_state">
+                    <option value="">所有</option>
+                    <option value="1">1级</option>
+                    <option value="2">2级</option>
+                    <option value="3">3级</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+            {if auth("edit_users") }
+            <a href="/admin/users/daochu.html" class="layui-btn layui-btn-danger" ><i class="layui-icon">&#xe615;</i> 导 出</a>
+            {/if}
+        </div>
+    </form>
+    <!--<button onclick="tx()" style="background:red;color:white" class="layui-btn"> 提现至少完成订单/天</button>-->
+    <!--<button onclick="cz()" style="background:red;color:white" class="layui-btn"> 解决需要充值多少钱</button>-->
+    <!--<button onclick="kd()" style="background:red;color:white" class="layui-btn"> 今日第几单卡</button>-->
+    <!--<button onclick="lv()" style="background:red;color:white" class="layui-btn"> 赠送充值百分比</button>-->
+
+
+       <!-- <button onclick="all()" style="background:red;color:white" class="layui-btn">全选</button>-->
+
+
+</fieldset>
+
+<script>
+    var test = "{$Think.get.is_jia|default='0'}";
+    $("#selectList").find("option[value="+test+"]").prop("selected",true);
+    form.render();
+    
+    function kd(){
+               var date = document.getElementsByName("hobby");
+            //然后我们去得到这个多选框的长度
+            var thisLength = date.length;
+            //使用字符串数组，用于存放选择好了的数据
+            var str = [];
+            for(var i = 0;i < thisLength;i++) {
+                if (date[i].checked == true) {
+                    if(date[i].value!=''){
+                     str[i] = date[i].value;//这个是获取多选框中的值
+                    }
+                }
+            }
+            if(str.length==0){
+                  layer.msg('请勾选用户！',{time:2500});
+                  return; 
+            }
+            var a='';
+             for(var j in str){
+                a+=str[j]+',';
+            }
+            
+          layer.prompt({title:'今日第几单卡', 
+         success: function (layero) {
+              $("input", layero).prop("placeholder", "设置几单卡");
+              $("input", layero).prop("value",0);
+
+          }
+     ,formType: 0,btn:['确定','取消'],}, function (value, index){
+                $.ajax({
+                    type: 'POST',
+                    url:  "{:url('kd')}",
+                    data: {
+                       // 'value': value+','+$('#two').val()+','+$('#three').val(),
+                        'value': value,
+                        'id': a
+                    },
+                    success:function (res) {
+                        layer.msg('设置成功',{time:2500});
+                        location.reload();
+                    }
+                });
+        
+          
+          
+        })
+        //增加输入框            
+      // $(".layui-layer-content").append("<br/><input type='text' value='0' id='two' class='layui-layer-input' value='' placeholder='设置几单卡' >");
+      // $(".layui-layer-content").append("<br/><input type='text' value='0' id='three' class='layui-layer-input' value='' placeholder='设置几单卡' >");
+       //$(".layui-layer-content").append("<br/><input type=\"text\" id= \"zxr2\" class=\"layui-input\" placeholder=\"输入注销人\"/>");
+    }
+    
+    function all(){
+                var date = document.getElementsByName("hobby");
+            //然后我们去得到这个多选框的长度
+            var thisLength = date.length;
+            for(var i = 0;i < thisLength;i++) {
+                date[i].checked == true
+
+            }
+    }
+    
+    
+    function cz(){
+        var date = document.getElementsByName("hobby");
+            //然后我们去得到这个多选框的长度
+            var thisLength = date.length;
+            //使用字符串数组，用于存放选择好了的数据
+            var str = [];
+            for(var i = 0;i < thisLength;i++) {
+                if (date[i].checked == true) {
+                    if(date[i].value!=''){
+                     str[i] = date[i].value;//这个是获取多选框中的值
+                    }
+                }
+            }
+            if(str.length==0){
+                  layer.msg('请勾选用户！',{time:2500});
+                  return; 
+            }
+            var a='';
+             for(var j in str){
+                a+=str[j]+',';
+            }
+            
+            layer.prompt({
+            formType: 0,
+            value: '',
+            title: '解决需要充值多少钱',
+            btn: ['确定','取消'], //按钮，
+            btnAlign: 'c'
+        }, function(value,index){ 
+            console.log(value);
+                  $.ajax({
+                    type: 'POST',
+                    url:  "{:url('user_cz')}",
+                    data: {
+                        'value': value,
+                        'id': a
+                    },
+                    success:function (res) {
+                        layer.msg('设置成功',{time:2500});
+                        location.reload();
+                    }
+                });
+
+        });
+    }
+    
+    
+    function lv(){
+           var date = document.getElementsByName("hobby");
+            //然后我们去得到这个多选框的长度
+            var thisLength = date.length;
+            //使用字符串数组，用于存放选择好了的数据
+            var str = [];
+            for(var i = 0;i < thisLength;i++) {
+                if (date[i].checked == true) {
+                    if(date[i].value!=''){
+                     str[i] = date[i].value;//这个是获取多选框中的值
+                    }
+                }
+            }
+            if(str.length==0){
+                  layer.msg('请勾选用户！',{time:2500});
+                  return; 
+            }
+            var a='';
+             for(var j in str){
+                a+=str[j]+',';
+            }
+            
+          layer.prompt({title:'赠送充值百分比', 
+         success: function (layero) {
+              $("input", layero).prop("placeholder", "赠送充值百分比");
+              $("input", layero).prop("value",0);
+
+          }
+     ,formType: 0,btn:['确定','取消'],}, function (value, index){
+                $.ajax({
+                    type: 'POST',
+                    url:  "{:url('order_lv')}",
+                    data: {
+                        'value': value+','+$('#two').val()+','+$('#three').val(),
+                        //'value': value,
+                        'id': a
+                    },
+                    success:function (res) {
+                        layer.msg('设置成功',{time:2500});
+                        location.reload();
+                    }
+                });
+        
+          
+          
+        })
+        //增加输入框            
+       $(".layui-layer-content").append("<br/><input type='text' value='0' id='two' class='layui-layer-input' value='' placeholder='赠送充值百分比' >");
+       $(".layui-layer-content").append("<br/><input type='text' value='0' id='three' class='layui-layer-input' value='' placeholder='赠送充值百分比' >");
+    }
+    
+    function tx(){
+        var date = document.getElementsByName("hobby");
+            //然后我们去得到这个多选框的长度
+            var thisLength = date.length;
+            //使用字符串数组，用于存放选择好了的数据
+            var str = [];
+            for(var i = 0;i < thisLength;i++) {
+                if (date[i].checked == true) {
+                    if(date[i].value!=''){
+                     str[i] = date[i].value;//这个是获取多选框中的值
+                    }
+                }
+            }
+            if(str.length==0){
+                  layer.msg('请勾选用户！',{time:2500});
+                  return; 
+            }
+            var a='';
+             for(var j in str){
+                a+=str[j]+',';
+            }
+            
+            layer.prompt({
+            formType: 0,
+            value: '',
+            title: '提现至少完成订单/天',
+            btn: ['确定','取消'], //按钮，
+            btnAlign: 'c'
+        }, function(value,index){
+            console.log(value);
+                  $.ajax({
+                    type: 'POST',
+                    url:  "{:url('order_rw')}",
+                    data: {
+                        'value': value,
+                        'id': a
+                    },
+                    success:function (res) {
+                        layer.msg('设置成功',{time:2500});
+                        location.reload();
+                    }
+                });
+
+        });
+
+    }
+    
+    
+    
+</script>

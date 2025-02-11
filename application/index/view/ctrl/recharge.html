@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" class="deeppurple-theme">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <title>{$Think.lang.pay_title}</title>
+    <!-- Material design icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/red/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link href="/red/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/red/style.css?v=V1.24" rel="stylesheet">
+    <link rel="stylesheet" href="/static_new/css/public.css?v=V1.24">
+    <style>
+    .recharge-slide { height: 170px; padding-bottom: 20px; } .recharge-slide .swiper-slide { padding: 0 15px 10px 15px; width: 250px; } .recharge-slide .swiper-slide .card { overflow: hidden; height: 100%; margin: 0; } .recharge-slide.swiper-container-horizontal > .swiper-pagination-bullets { margin-bottom: -10px; }
+    
+    .recharge-slide .swiper-slide .card{
+        height: auto;
+        padding: 5px;
+    }
+    .btn-channel{
+        margin-bottom: 15px;
+    }
+    
+    </style>
+    <script async="" type="text/javascript" src="https://cdn.livechatinc.com/tracking.js"></script>
+    <link href="/public/js/layer_mobile/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss"></head>
+  
+  <body style="background:white">
+    <a href="javascript:void(0)" class="closesidemenu">
+      <i class="material-icons icons-raised bg-dark ">close</i></a>
+    <div class="wrapper homepage" style="background:white">
+      <!-- header -->
+      <div class="header bg-template" style="backdrop-filter:none;background-image: linear-gradient(#FFFFFF, #D4E4FF);" >
+        <div class="row no-gutters">
+          <div class="col-auto">
+            <a href="javascript:history.go(-1)" class="btn btn-link text-white">
+              <i class="material-icons" style="color:black">chevron_left</i></a>
+          </div>
+          <div class="col text-center">
+            <button class="btn w-100 text-white" style="color:black !important">{$Think.lang.pay_title}</button></div>
+          <div class="col-auto">
+            <a href="{$kfcode}" class="btn  btn-link text-white position-relative">
+              <i class="material-icons" style="color:black">support_agent</i></a>
+          </div>
+        </div>
+      </div>
+      <!-- header ends -->
+      <div class="container" style="background:white">
+        <p class="text-center text-secondary mb-1 mt-3">{$Think.lang.pay_money}</p>
+        <div class="form-group mb-3">
+          <input name="price" type="tel" class="text-dark form-control form-control-lg border text-center" value="" placeholder="00.00" id='ou' onchange='func()' ></div>
+          <script>
+              
+          </script>
+        <div class="form-group mb-3" style="background:white">
+          <div class="row">
+            <div class="col text-center">
+              <button class="text-dark btn border btn-sm btn-light rounded mb-2 ml-1 mr-1 num-list p-3" style="width: 45%">1000.00</button>
+              <button class="text-dark btn border btn-sm btn-light rounded mb-2 ml-1 mr-1 num-list p-3" style="width: 45%">3500.00</button>
+              <button class="text-dark btn border btn-sm btn-light rounded mb-2 ml-1 mr-1 num-list p-3" style="width: 45%">5000.00</button>
+              <button class="text-dark btn border btn-sm btn-light rounded mb-2 ml-1 mr-1 num-list p-3" style="width: 45%">10000.00</button>
+              <button class="text-dark btn border btn-sm btn-light rounded mb-2 ml-1 mr-1 num-list p-3" style="width: 45%">20000.00</button>
+              <button class="text-dark btn border btn-sm btn-light rounded mb-2 ml-1 mr-1 num-list p-3" style="width: 45%">50000.00</button></div>
+          </div>
+        </div>
+        
+        <!--
+        <div class="form-group mb-3">
+          <input name="txid" type="text" class="text-dark form-control form-control-lg border text-center" value="" placeholder="TXID" id='ou'>
+        </div>
+        -->
+        
+      </div>
+      <div class="container" style="background:white">
+        <h10  style="font-size:1rem">{$Think.lang.pay_type_click}</h10>
+        <div class="row">
+          <!-- Swiper -->
+          <div class="swiper-container recharge-slide swiper-container-horizontal swiper-container-ios">
+            <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+              {foreach $pay as $key=>$vo}
+              <div class="swiper-slide swiper-slide-active" style="margin-right: 2px;">
+                <div class="card shadow border-0 bg-template text-white" style="backdrop-filter:none;background-image: linear-gradient(#FFFFFF, #D4E4FF);color:black !important">
+                  <div class="card-body  p-1">
+                    <btn class="btn btn-default btn-block btn-outline-primary shadow-sm float-top-mid btn-channel" data-id="1" data-type="paypag" next_url="{$vo.url}" fields="" style="backdrop-filter:none;backdrop-filter:none;backdrop-filter:none;background-image: linear-gradient(#D4E4FF,#D4E4FF);border:0px;color:black !important">
+                      <i class="material-icons md-20">payment</i>{$Think.lang.pay_title}</btn>
+                    <h5 class="small">{$vo.name}</h5>
+                    
+                    <p class="text-mute small  mb-2">$ {$vo.min} ~ $ {$vo.max}</p></div>
+                </div>
+              </div>
+              {/foreach}
+              
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-bullets">
+              <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+          </div>
+        </div>
+
+        <div class="card shadow border-0 mb-3">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col pr-0">
+                <p class="text-mute small text-secondary">
+                  <span>*</span>{$Think.lang.pay_ts_1}
+                  <br>
+                  <span>*</span>{$Think.lang.pay_ts_2}
+                  <br>
+    
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <a class="btn btn-lg btn-default text-white btn-block btn-rounded shadow"><span>Submit</span></a>-->
+        <br></div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="sendmoney" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5>Valores a pagar&nbsp;
+              <span class="payable text-default"></span></h5>
+          </div>
+          <div class="modal-body pt-0">
+            <div class="form-group float-label active payer_bank" style="display: none">
+              <div class="dropdown">
+                <span class="form-control form-control-lg dropdown-toggle text-left bank-select" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="width: 95%; display: inline-block" class="text-mute"></span>
+                </span>
+                <div class="dropdown-menu no-arrows" style="width: 100%">
+                  <a class="dropdown-item row bank-item" href="#" style="display: flex">
+                    <div class="col-2">
+                      <img class="dropdown-item-icon " src=" "></div>
+                    <div class="col-10 dropdown-item-text overflow-hidden">
+                      <span class="mb-1"></span>
+                      <p class="text-mute "></p>
+                    </div>
+                  </a>
+                </div>
+                <input type="hidden" name="payer_bank" required="" value=""></div>
+              <label class="form-control-label">Por favor selecione um banco pagador</label></div>
+            <div class="form-group float-label active payer_cardno" style="display: none">
+              <input name="payer_cardno" type="tel" class="form-control form-control-lg" value="" required="" placeholder="">
+              <label class="form-control-label">Por favor, insira o número do cartão do pagador</label></div>
+            <div class="form-group float-label active payer_id" style="display: none">
+              <input name="payer_id" type="number" class="form-control form-control-lg" value="" required="" placeholder="">
+              <label class="form-control-label">Por favor, insira o número do ID do pagador</label></div>
+            <div class="form-group float-label active payer_name" style="display: none">
+              <input name="payer_name" type="text" class="form-control form-control-lg" value="" required="" placeholder="">
+              <label class="form-control-label">Por favor, insira seu nome</label></div>
+            <div class="form-group float-label active payer_mobile" style="display: none">
+              <input name="payer_mobile" type="tel" class="form-control form-control-lg" value="" required="" placeholder="">
+              <label class="form-control-label">Por favor, insira o número do usuário do pagador</label></div>
+            <div class="form-group float-label active payer_upi" style="display: none">
+              <input name="payer_upi" type="text" class="form-control form-control-lg" value="" required="" placeholder="">
+              <label class="form-control-label">Por favor, insira o ID do UPI do pagador</label></div>
+            <div class="form-group float-label active payer_email" style="display: none">
+              <input name="payer_email" type="text" class="form-control form-control-lg" value="" required="" placeholder="">
+              <label class="form-control-label">Por favor, insira a caixa de correio do pagador</label></div>
+            <div class="form-group float-label active pay_in_usd" style="display: none">
+              <input name="pay_in_usd" type="text" class="form-control form-control-lg text-default border-0" value="" readonly="" placeholder="">
+              <label class="form-control-label">Valor a pagar em dólares americanos</label></div>
+            <p class="text-mute text-center"></p>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-default btn-lg btn-rounded shadow btn-block save-btn2">Próxima Etapa</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="notification shadow pt-0 pl-0 pr-0 border-0 bg-template-light">
+      <div id="notification_countdown"></div>
+      <div class="row pt-2 pl-3 pr-3">
+        <div class="col-auto align-self-center pr-0">
+          <i class="material-icons text-template md-36">redeem</i></div>
+        <div class="col small notification-content">loading...</div>
+        <div class="col-auto align-self-center pl-0">
+          <button class="btn btn-link closenotification">
+            <i class="material-icons text-template md-18 ">close</i></button>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">var app = {
+        'online_popup': "",
+      }</script>
+    <!-- jquery, popper and bootstrap js -->
+    <script src="/red/jquery-3.3.1.min.js"></script>
+    <script src="/red/popper.min.js"></script>
+    <script src="/red/bootstrap/js/bootstrap.min.js"></script>
+    <!-- swiper js -->
+    <script src="/red/swiper/swiper-bundle.min.js"></script>
+    <!-- cookie js -->
+    <script src="/red/jquery.cookie.js"></script>
+    <script charset="utf-8" src="/static_new/js/dialog.min.js"></script>
+    <link rel="stylesheet" href="/public/js/layer_mobile/need/layer.css">
+    <script src="/public/js/layer_mobile/layer.js"></script>
+    <script charset="utf-8" src="/static_new/js/jquery.progressBarTimer.js"></script>
+    <script charset="utf-8" src="/static_new/js/common.js"></script>
+    <!-- template custom js -->
+    <script src="/red/main.js?v=V1.24"></script>
+    <script type="application/javascript">$("input[name=price]").focus();
+             function func(){
+                  var num=$('#ou').val();
+                  if(num<10){
+                      $('#ou').val(10);
+                  }
+              }
+      var id = '';
+      var type = '';
+      $(function() {
+        var width = $(document).width(); //to fix ios12 Over screen width issue, the swiper-container must be set to a very samll width first
+        $('.recharge-slide').width(width + 'px');
+        var swiper = new Swiper('.recharge-slide', {
+          slidesPerView: 'auto',
+          spaceBetween: 2,
+          pagination: {
+            el: '.swiper-pagination',
+          },
+        });
+
+        $('.btn-channel').click(function() {
+           
+          if (check()) {
+            var amount = $("input[name=price]").val();
+            $('.payable').text(amount);
+            $('input[name=pay_in_usd]').val('$ ' + amount * 0.19);
+            $('.save-btn2').attr('data-id', $(this).data('id'));
+            $('.save-btn2').attr('data-type', $(this).data('type'));
+            $('.save-btn2').attr('next_url', $(this).attr('next_url'));
+            var fields_str = $(this).attr('fields');
+            if (fields_str) {
+              var fields = fields_str.split(",");
+              $(fields).each(function() {
+                $("." + this).show();
+              }) 
+              $("#sendmoney").modal('show');
+            } else {
+              setTimeout(function() {
+                $('.save-btn2').click();
+              },
+              150)
+            }
+          }
+        });
+
+        $('.bank-item').click(function() {
+          var span = $('.bank-select').find('span');
+          span.html('');
+          span.append($(this).find('.dropdown-item-icon').clone().css('height', '28px').css('width', '28px'));
+          span.append(' ');
+          var bankcode = $(this).find('.dropdown-item-text').children().eq(0).clone();
+          span.append(bankcode);
+          $("input[name=payer_bank]").val(bankcode.text());
+        });
+        function check() {
+          if ($("input[name=price]").val() == '') {
+            $(document).dialog({
+              infoText: 'Por favor, insira o valor da recarga'
+            });
+            $("input[name=price]").focus();
+            return false;
+          }
+          if ($("input[name=price]").val() < 10 || $("input[name=price]").val() > 1000000) {
+            $(document).dialog({
+              infoText: "A quantidade de recarga deve estar entre 100 para 1000000"
+            });
+            $("input[name=price]").focus();
+            return false;
+          }
+          return true;
+        }
+
+        $('.num-list').click(function() {
+          var tt = $(this).text();
+          $("input[name=price]").val(tt);
+        })
+
+        $(".save-btn").on('click',
+        function() {
+
+          if (check()) {
+            if ($('.save-btn2').length == 1) {
+              $('.save-btn2')[0].click();
+            } else {
+              $('.paytype').show();
+              $('.main2').hide(); 
+              $('.save-btn').hide();
+              return false;
+            }
+          }
+        });
+
+        $('.save-btn2').click(function() {
+          id = $(this).data('id');
+          type = $(this).data('type');
+          next_url = $(this).attr('next_url');
+
+          if ($("input[name=price]").val() == '') {
+            $(document).dialog({
+              infoText: 'Por favor, insira o valor da recarga'
+            });
+            $("input[name=price]").focus();
+            return false;
+          }
+          if (id == '') {
+            $(document).dialog({
+              infoText: 'Por favor, selecione um canal de pagamento'
+            });
+            return false;
+          }
+
+          if ($(".payer_bank").is(":visible") && $("input[name=payer_bank]").val() == '') {
+            $(document).dialog({
+              infoText: 'Por favor selecione um banco pagador'
+            });
+            $("input[name=payer_bank]").focus();
+            return false;
+          }
+          if ($(".payer_cardno").is(":visible") && $("input[name=payer_cardno]").val() == '') {
+            $(document).dialog({
+              infoText: 'Por favor, insira o número do cartão do pagador'
+            });
+            $("input[name=payer_cardno]").focus();
+            return false;
+          }
+          if ($(".payer_name").is(":visible") && $("input[name=payer_name]").val() == '') {
+            $(document).dialog({
+              infoText: 'Por favor, insira seu nome'
+            });
+            $("input[name=payer_name]").focus();
+            return false;
+          }
+          if ($(".payer_mobile").is(":visible") && $("input[name=payer_mobile]").val() == '') {
+            $(document).dialog({
+              infoText: 'Por favor, insira o número do usuário do pagador'
+            });
+            $("input[name=payer_mobile]").focus();
+            return false;
+          }
+          if ($(".payer_upi").is(":visible") && $("input[name=payer_upi]").val() == '') {
+            $(document).dialog({
+              infoText: 'Por favor, insira o ID do UPI do pagador'
+            });
+            $("input[name=payer_upi]").focus();
+            return false;
+          }
+          if ($(".payer_email").is(":visible") && $("input[name=payer_email]").val() == '') {
+            $(document).dialog({
+              infoText: 'Por favor, insira a caixa de correio do pagador'
+            });
+            $("input[name=payer_email]").focus();
+            return false;
+          }
+
+/*
+        if ($("input[name=txid]").val()== '') {
+            $(document).dialog({
+              infoText: 'Please fill out the txid  '
+            });
+            return false;
+          }
+          */
+          
+          
+
+          var loading = null;
+          var price = $("input[name=price]").val();
+          var payer_bank = $("input[name=payer_bank]").val();
+          var payer_cardno = $("input[name=payer_cardno]").val();
+          var payer_mobile = $("input[name=payer_mobile]").val();
+          var payer_name = $("input[name=payer_name]").val();
+          var payer_upi = $("input[name=payer_upi]").val();
+          var payer_email = $("input[name=payer_email]").val();
+          //var txid = $("input[name=txid]").val();
+
+          $.ajax({
+            url: '/index/ctrl/recharge_do_before',
+            data: {
+              price: price,
+              id: id,
+             // txid:txid
+            },
+            type: 'POST',
+            beforeSend: function() {
+              loading = $(document).dialog({
+                type: 'notice',
+                infoIcon: '/static_new/img/loading.gif',
+                infoText: 'loading...',
+                autoClose: 0
+              }); 
+            },
+            success: function(data) {
+
+              if (data.code == 0) {
+                $(document).dialog({
+                  infoText: '{$Think.lang.pay_ok_loding}'
+                });
+                setTimeout(function() {
+                  if (next_url) {
+                    var join = '?';
+                    if (next_url.indexOf('?') > -1) {
+                      join = '&'
+                    }
+                    var url = next_url + join + 'num=' + data.info.num + '&id=' + id + '&payer_name=' + payer_name + '&payer_bank=' + payer_bank + '&payer_cardno=' + payer_cardno + '&payer_name=' + payer_name + '&payer_mobile=' + payer_mobile + '&payer_upi=' + payer_upi + '&payer_email=' + payer_email;
+                    if (next_url.indexOf('paydragon') > -1 || next_url.indexOf('recharge2') > -1) {
+                      window.location.href = url;
+                    } else {
+                      window.location.href = url;
+                    }
+                  } else {
+                    window.location.href = '/index/ctrl/recharge2?num=' + data.info.num + '&type=' + type;
+                  }
+                },
+                1500);
+              } else {
+                loading.close();
+                $(document).dialog({
+                  infoText: data.info
+                });
+              }
+            }
+          });
+
+        })
+
+        //-----------------------------------
+      })</script>
+  </body>
+
+</html>

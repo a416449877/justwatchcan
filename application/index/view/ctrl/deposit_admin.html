@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>withdraw</title>
+	<link rel="stylesheet" href="/static_en/css/css.css">
+	
+</head>
+<body class="bodybg">
+	<div class="headerfix"><div class="back"><a href="javascript:;"><img src="/static_en/img/Icon-04.png" alt=""></a></div><h2>Withdraw</h2></div>
+	
+	<div class="withdraw">
+		<div class="tabnav">
+			<ul>
+				<li><a href="/index/ctrl/deposit">Withdraw Now</a></li>
+				<li class="on"><a href="javascript:;">Withdraw History</a></li>
+			</ul>
+		</div>
+		<div class="tabbox">
+
+			<div class="li two on transaction" >
+				<ul>
+				{if $list}
+				{volist name='list' id='v'} 
+				
+				<li>
+				<div class="img"><img src="/static_en/img/transaction_icon.png" alt=""></div>
+				<div class="info" style="width: 100%;">
+					{switch $v.status}
+                            {case 1}<h2>{$Think.lang.pay_dss}</h2>{/case}
+                            {case 2}<h2>{$Think.lang.pay_ysh}</h2>{/case}
+                            {case 3}<h2>{$Think.lang.pay_shsb}</h2>{/case}
+                            {case 4}<h2>{$Think.lang.pay_ddck}</h2>{/case}
+                            {/switch}
+
+					<div class="timeprice">
+						<time><?php echo (date("Y-m-d H:i:s",$v['addtime'])); ?></time>
+						<span>{$v.num}</span>
+					</div>
+				</div>
+		    	</li>
+		
+				{/volist}
+				{/if}
+				{empty name='list'}<li>* You will receive your withdrawal within an hour</li>{else}{/empty}
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+		<div class="footerfix">
+		<ul>
+			<li><a href="/index/index/home.html"><img src="/static_en/img/BG-019.png" alt=""><p>Home</p></a></li>
+			<li class="starting"><a href="/index/rot_order/index"><div class="img"><img src="/static_en/img/BG-02.png" alt=""></div><p>Starting</p></a></li>
+			<li><a href="/index/order/index.html"><img src="/static_en/img/BG-09.png" alt=""><p>Records</p></a></li>
+		</ul>
+	</div>
+	
+	<script type="text/javascript" src="/static_en/js/jquery.js"></script>
+	<script type="text/javascript" src="/static_en/js/public.js"></script>
+
+</html>

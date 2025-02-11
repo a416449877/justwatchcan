@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Transaction</title>
+	<link rel="stylesheet" href="/static_en/css/css.css">
+</head>
+<body class="bodybg">
+	<div class="headerfix"><div class="back"><a href="javascript:;"><img src="/static_en/img/Icon-04.png" alt=""></a></div><h2>Transaction</h2></div>
+	
+	<div class="transaction">
+		<ul>
+			 {if $list}
+              {volist name='list' id='v'} 
+			<li>
+				<div class="img"><img src="/static_en/img/transaction_icon.png" alt=""></div>
+				<div class="info" style="width: 100%;">
+					{switch $v.type}
+                            {case 1}<h2>{$Think.lang.log_cz}</h2>{/case}
+                            {case 2}<h2>{$Think.lang.log_jd}</h2>{/case}
+                            {case 3}<h2>{$Think.lang.jiedanfy}</h2>{/case}
+                            {case 6}<h2>{$Think.lang.log_xjfy}</h2>{/case}
+                            {case 7}<h2>{$Think.lang.log_tx}</h2>{/case}
+                            {case 21}<h2>{$Think.lang.log_zr}</h2>{/case}
+                            {case 22}<h2>{$Think.lang.log_zc}</h2>{/case}
+                            {case 23}<h2>{$Think.lang.log_sy}</h2>{/case}
+                            {case 24}<h2>{$Think.lang.upgrade_success}</h2>{/case}
+                            {case 25}<h2>{$Think.lang.upgrade_error}</h2>{/case}
+                            {case 26}<h2>{$Think.lang.pingtaisong}</h2>{/case}
+                            {case 27}<h2>{$Think.lang.pingtaijian}</h2>{/case}
+                            {/switch}
+
+					<div class="timeprice">
+						<time><?php echo (date("Y-m-d H:i:s",$v['addtime'])); ?></time>
+						<span>{$v.num}</span>
+					</div>
+				</div>
+			</li>
+				{/volist}
+                {/if}
+		
+		</ul>
+	</div>
+	
+	<script type="text/javascript" src="/static_en/js/jquery.js"></script>
+	<script type="text/javascript" src="/static_en/js/public.js"></script>
+</body>
+</html>

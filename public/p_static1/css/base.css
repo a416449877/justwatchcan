@@ -1,0 +1,55 @@
+/* 初始化样式 */
+* {
+	padding: 0;
+	margin: 0;
+}
+html {
+	font-size: 20px;
+}
+/* 移动端响应式适配 */
+@media only screen and (max-width :320px) {
+	html {
+		font-size: 16px;
+	}
+}
+@media only screen and (min-width: 400px) {
+	html {
+		font-size: 21.33px!important;
+	}
+}
+@media only screen and (min-width: 414px) {
+	html {
+		font-size: 22.08px!important;
+	}
+}
+@media only screen and (min-width: 480px) {
+	html {
+		font-size: 25.6px!important;
+	}
+}
+a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+input {
+	border: none;
+	background: none;
+	outline: none;
+}
+input::-webkit-input-placeholder {
+	/* color: rgba(255,255,255,0.6); */
+}
+img[src=""], img:not([src]){
+	opacity: 0;
+}
+textarea {
+	border: none;
+	outline: none;
+	background: none;
+	resize: none;
+}
+select, option {
+	border: 0;
+	outline: none;
+	background: none;
+}
